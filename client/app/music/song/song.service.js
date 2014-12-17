@@ -3,9 +3,11 @@
 angular.module('jazzChordApp')
   .factory('song', song)
 
-function song() {
+song.$inject = ['musicChords']
 
-  var song = ['a'];
+function song(musicChords) {
+
+  var song = [];
 
   return {
     addMeasure: addMeasure,
@@ -14,9 +16,14 @@ function song() {
     }
 
 
-  function addMeasure(note, index) {
-    var measure = {};
-    console.log(note, index)
+  function addMeasure(note, type, beats) {
+    var type = 'M-triad';
+    var measure = [];
+
+    for (var i = 0; i < beats; i++) {
+      var beat = musicChords.buildMajorChord(note, type);
+      measure.push(beat);
+    }
     song.push(measure);
   }
 
