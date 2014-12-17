@@ -1,60 +1,67 @@
-<h1>Jazz Chord Substitutor</h1>
+<div class="dashboard">
+	<h1>Jazz Chord Substitutor</h1>
 
-<div class="col-md-12 col-lg-12">
-	<div class="col-md-8 col-lg-8">
-		<h2>{{dash.songTitle}}</h2>
+	<div class="row">
+		<div class="col-md-8 col-lg-8">
+			<h2>{{dash.songTitle}}</h2>
 
-		<div class="btn-dash" role="dash">
-			<div class="btn-group">
-				<li id="rest" class="btn-group btn btn-default draggable" ng-click="dash.addRest()">  / / / / </li>
-				<li
-					class="btn-group btn btn-default draggable"
-						ng-repeat="note in dash.notes | limitTo: 12"
-						ng-click="dash.addMeasure(note, $index)">{{ note }}</li>
+			<div class="btn-dash" role="dash">
+				<div class="btn-group">
+					<li id="rest" class="btn-group btn btn-default draggable" ng-click="dash.addRest()">  / / / / </li>
+					<li
+						class="btn-group btn btn-default draggable"
+							ng-repeat="note in dash.notes | limitTo: 12"
+							ng-click="dash.addMeasure(note, $index)">{{ note }}</li>
+				</div>
+
+				<a id="q-mark" class="btn btn-default data-title" href="#" data-toggle="tooltip" tooltip="Click a note to add a measure to your song">?</a>
+
 			</div>
 
-			<a id="q-mark" class="btn btn-default data-title" href="#" data-toggle="tooltip" tooltip="Click a note to add a measure to your song">?</a>
-
-		</div>
-
-	  <div class="btn-group">
-		 	<p class="btn btn-default">Tempo {{dash.tempo}} bpm</p>
-				  
-		 	<button 
-		 		type="button"
-		 		class="btn btn-default"
-		 		ng-click=dash.tempoUp()>&#8593;</button>
-		 	<button 
-		 		type="button" 
-		 		class="btn btn-default"
-		 		ng-click=dash.tempoDown()>&#8595;</button>
-		</div>
-		<br>
-
-	  <button class="btn btn-default" ng-click="dash.playSong()">Play</button>
-	</div>
-
-	<div class="col-md-4 col-lg-4">
-		<div class="row">
-			<div class="input-group">
-			  <span class="input-group-addon">Title:</span>
-			  <input type="text" class="form-control" placeholder="song title" value="{{dash.songTitle}}" ng-model="dash.songTitle"/>
+		  <div class="btn-group">
+			 	<p class="btn btn-default">Tempo {{dash.tempo}} bpm</p>
+					  
+			 	<button 
+			 		type="button"
+			 		class="btn btn-default"
+			 		ng-click=dash.tempoUp()>&#8593;</button>
+			 	<button 
+			 		type="button" 
+			 		class="btn btn-default"
+			 		ng-click=dash.tempoDown()>&#8595;</button>
 			</div>
-
 			<br>
-		  <button id="save" class="btn btn-default" ng-click="dash.saveSong()">Save This Song</button>
-			<button class="btn btn-default dash" ng-click="dash.discardDraft(dash)">Discard Draft</button>
+
+		  <button class="btn btn-default" ng-click="dash.playSong()">Play</button>
 		</div>
 
-		<div class="row">
-		  My Songs:<select class="btn btn-default" ng-model="dash.mySong" ng-options="song as song for song in dash.userSongs"></select>
+		<div class="col-md-4 col-lg-4 data-service-buttons">
+			<div class="row">
+				<div class="input-group">
+				  <span class="input-group-addon">Title:</span>
+				  <input type="text" 
+				  			 id="song-title"
+				  			 class="form-control" 
+				  			 placeholder="song title" 
+				  			 value="{{dash.songTitle}}" 
+				  			 ng-model="dash.songTitle"/>
+				</div>
 
-			<button class="btn btn-default dash" ng-click="dash.loadMySong()">Load My Song</button>
-		</div>
-		<div class="row">
-		 	Standards:<select class="btn btn-default" ng-model="dash.selectStandard" ng-options="song as song for song in dash.standards"></select>
+				<br>
+			  <button id="save" class="btn btn-default" ng-click="dash.saveSong()">Save This Song</button>
+				<button class="btn btn-default dash" ng-click="dash.discardDraft(dash)">Discard Draft</button>
+			</div>
 
-			<button class="btn btn-default dash" ng-click="dash.loadStandard()">Load Standard</button>
+			<div class="row">
+			  My Songs:<select class="btn btn-default" ng-model="dash.mySong" ng-options="song as song for song in dash.userSongs"></select>
+
+				<button class="btn btn-default dash" ng-click="dash.loadMySong()">Load My Song</button>
+			</div>
+			<div class="row">
+			 	Standards:<select class="btn btn-default" ng-model="dash.selectStandard" ng-options="song as song for song in dash.standards"></select>
+
+				<button class="btn btn-default dash" ng-click="dash.loadStandard()">Load Standard</button>
+			</div>
 		</div>
 	</div>
 </div>
