@@ -1,6 +1,15 @@
 'use strict';
 
 angular.module('jazzChordApp')
-  .controller('ScoreCtrl', function ($scope) {
-    $scope.message = 'Hello';
-  });
+  .controller('ScoreCtrl', ScoreCtrl);
+
+ScoreCtrl.$inject = [];
+
+function ScoreCtrl() {
+
+	var vm = this;
+
+	
+
+
+ }

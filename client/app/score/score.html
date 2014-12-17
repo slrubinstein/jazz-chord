@@ -1,3 +1,58 @@
-<div class="col-md-12">
-This is the score view.
+
+<div class="col-md-12 col-lg-12">
+  <div ui-sortable id="score" class="row" ng-model="score.song">
+
+    <div id="song{{+$index}}" class="measure" ng-repeat="measure in score.song track by $index" >
+      
+      <div class="btn-group" >
+        <li 
+          ng-repeat="beat in score.song[$index] track by $index"
+          class="btn btn-default dropdown-toggle droppable beat" 
+          data-toggle="dropdown"
+          ng-click="score.dropdown($event, $parent.$index, $index)">
+          <span class="caret dropdown-toggle"></span>
+          {{measure[$index].currentroot }}{{measure[$index].currentChord}}
+
+          <!-- Dropdown Menu Items Start -->
+          <ul class="dropdown-menu" role="menu">
+            <li>&nbsp; Major Substitutions</li>
+            <li ng-repeat="sub in score.majorSubs">
+              <a href="#" ng-click="score.updateChord(sub.name, sub.chordroot, $event, $parent.$index)">
+                <table class="table"><tr><td>{{sub.chordroot}}{{sub.name}}</td>
+                  <td> &#40; {{sub.notes.join(', ')}} &#41; </td></tr>
+                </table></a>
+            </li>
+            <li>&nbsp; Minor Substitutions</li>
+            <li ng-repeat="sub in score.minorSubs">
+              <a href="#" ng-click="score.updateChord(sub.name, sub.chordroot, $event, $parent.$index)">
+                <table class="table"><tr><td>{{sub.chordroot}}{{sub.name}}</td>
+                  <td> &#40; {{sub.notes.join(', ')}} &#41; </td></tr>
+                </table></a>
+            </li>
+            <li>&nbsp; Tonic Substitutions</li>
+            <li ng-repeat="sub in score.tonicSubs">
+              <a href="#" ng-click="score.updateChord(sub.name, sub.chordroot, $event, $parent.$index)">
+                <table class="table"><tr><td>{{sub.chordroot}}{{sub.name}}</td>
+                  <td> &#40; {{sub.notes.join(', ')}} &#41; </td></tr>
+                </table></a>
+            </li>
+            <li>&nbsp; Dominant 7 Chords</li>
+            <li ng-repeat="sub in score.D7s">
+              <a href="#" ng-click="score.updateChord(sub.name, sub.chordroot, $event, $parent.$index)">
+                <table class="table"><tr><td>{{sub.chordroot}}{{sub.name}}</td>
+                  <td> &#40; {{sub.notes.join(', ')}} &#41; </td></tr>
+                </table></a>
+            </li>
+          </ul>
+          <!-- Dropdown Menu Items End -->
+
+        </li>
+
+
+      </div>
+
+      <button class="btn btn-danger btn-xs" ng-click="score.deleteCurrentMeasure($index)">X</button>
+
+    </div>
+  </div>
 </div>
