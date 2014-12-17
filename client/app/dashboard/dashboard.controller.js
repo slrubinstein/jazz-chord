@@ -3,14 +3,16 @@
 angular.module('jazzChordApp')
   .controller('DashboardCtrl', DashboardCtrl);
 
-DashboardCtrl.$inject = ['$scope', 'dataservice'];
+DashboardCtrl.$inject = ['$scope', 'dataservice', 'musicNotes',
+													'song'];
 
-function DashboardCtrl($scope, dataservice) {
+function DashboardCtrl($scope, dataservice, musicNotes, song) {
 
 	var vm = this;
 
 	vm.addMeasure = addMeasure;
 	vm.discardDraft = discardDraft;
+	vm.notes = musicNotes.notes;
 	vm.playSong = playSong;
 	vm.tempo = 120;
 	vm.tempoDown = tempoDown;
@@ -19,8 +21,8 @@ function DashboardCtrl($scope, dataservice) {
 	vm.standards = dataservice.getAllStandards();
 	vm.userSongs = dataservice.getAllUserSongs();
 
-	function addMeasure() {
-
+	function addMeasure(note, index) {
+		song.addMeasure(note, index);
 	}
 
 	function discardDraft() {

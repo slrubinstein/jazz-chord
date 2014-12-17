@@ -3,13 +3,18 @@
 angular.module('jazzChordApp')
   .controller('ScoreCtrl', ScoreCtrl);
 
-ScoreCtrl.$inject = [];
+ScoreCtrl.$inject = ['song'];
 
-function ScoreCtrl() {
+function ScoreCtrl(song) {
 
 	var vm = this;
 
-	
+	vm.deleteMeasure = deleteMeasure;
+	vm.song = song.song;
 
+	
+	function deleteMeasure(index) {
+		song.deleteMeasure(index);
+	}
 
  }

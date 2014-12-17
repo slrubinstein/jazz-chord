@@ -10,7 +10,7 @@
 				<li
 					class="btn-group btn btn-default draggable"
 						ng-repeat="note in dash.notes | limitTo: 12"
-						ng-click="dash.addChordMeasure(note, $index)">{{ note }}</li>
+						ng-click="dash.addMeasure(note, $index)">{{ note }}</li>
 			</div>
 
 			<a id="q-mark" class="btn btn-default data-title" href="#" data-toggle="tooltip" tooltip="Click a note to add a measure to your song">?</a>
