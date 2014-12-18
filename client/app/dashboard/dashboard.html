@@ -7,9 +7,12 @@
 
 			<div class="btn-dash" role="dash">
 				<div class="btn-group">
-					<li id="rest" class="btn-group btn btn-default draggable" ng-click="dash.addRest()">  / / / / </li>
-					<li
-						class="btn-group btn btn-default draggable"
+					<li draggable 
+							id="rest" 
+							class="btn-group btn btn-default" 
+							ng-click="dash.addRest()">  / / / / </li>
+					<li draggable
+							class="btn-group btn btn-default draggable"
 							ng-repeat="note in dash.notes | limitTo: 12"
 							ng-click="dash.addMeasure(note, $index)">{{ note }}</li>
 				</div>

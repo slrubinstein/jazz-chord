@@ -30,4 +30,4 @@ function ScoreCtrl($scope, song, musicSubstitutions, musicChords) {
 		vm.song[measureIndex].splice(beatIndex, 1, newBeat)
 	}
 
- }
+}
