@@ -30,7 +30,10 @@ function ScoreCtrl($scope, song, musicSubstitutions, musicChords) {
 		vm.song[measureIndex].splice(beatIndex, 1, newBeat)
 	}
 
-	$scope.$on('updateSong', function() {
-		vm.song = song.song
+	$scope.$on('updateSong', function(event, loadedSong) {
+		song.song.length = 0;
+		loadedSong.forEach(function(measure) {
+			song.song.push(measure)
+		})
 	})
 }

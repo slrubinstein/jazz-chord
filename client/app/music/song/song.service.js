@@ -19,7 +19,7 @@ function song(musicChords) {
     tempo: tempo
     }
 
-  function addMeasure(note, type, beats) {
+  function addMeasure(note, beats) {
     var type = 'M-triad';
     var measure = [];
 
@@ -27,6 +27,7 @@ function song(musicChords) {
       var beat = musicChords.buildChord(note, type);
       measure.push(beat);
     }
+
     song.push(measure);
   }
 

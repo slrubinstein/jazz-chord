@@ -35,12 +35,12 @@ function DashboardCtrl($scope, dataservice, musicNotes, song,
 		// getAllStandards();
 	}
 
-	function addMeasure(note, index) {
-		song.addMeasure(note, index, vm.beats);
+	function addMeasure(note) {
+		song.addMeasure(note, vm.beats);
 	}
 
 	function discardDraft() {
-
+		song.song.length = 0;
 	}
 
 	function getAllUserSongs() {
@@ -53,13 +53,11 @@ function DashboardCtrl($scope, dataservice, musicNotes, song,
 	function loadMySong() {
 		dataservice.loadMySong(vm.mySong._id)
 		.then(function(loadedSong) {
-			console.log(loadedSong.data.song)
 			if (loadedSong.data.song.length === 0) {
 				return;
 			};
-			song.song = loadedSong.data.song;
 
-			$scope.$broadcast('updateSong')
+			$scope.$broadcast('updateSong', loadedSong.data.song)
 		});
 	}
 
