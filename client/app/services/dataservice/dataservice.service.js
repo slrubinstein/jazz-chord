@@ -19,11 +19,11 @@ function dataservice($http) {
   }
 
   function getAllUserSongs() {
-
+    return $http.get('/api/songs');
   }
 
-  function saveSong() {
-    // return $http.put...
+  function saveSong(songData) {
+    return $http.post('/api/songs', songData);
   }
 
   function loadMySong() {

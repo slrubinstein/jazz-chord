@@ -6,7 +6,6 @@ var mongoose = require('mongoose'),
 var SongSchema = new Schema({
   title: String,
   beatsPerMeasure: Number,
-  beatsPerMinute: Number,
   tempo: Number,
   author: {type: Schema.Types.ObjectId, ref: 'User'},
   song: []

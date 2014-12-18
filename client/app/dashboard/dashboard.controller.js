@@ -4,10 +4,10 @@ angular.module('jazzChordApp')
   .controller('DashboardCtrl', DashboardCtrl);
 
 DashboardCtrl.$inject = ['$scope', 'dataservice', 'musicNotes',
-													'song', 'musicSubstitutions'];
+													'song', 'musicSubstitutions', 'Auth'];
 
 function DashboardCtrl($scope, dataservice, musicNotes, song,
-												musicSubstitutions) {
+												musicSubstitutions, Auth) {
 
 	var vm = this;
 
@@ -16,13 +16,22 @@ function DashboardCtrl($scope, dataservice, musicNotes, song,
 	vm.discardDraft = discardDraft;
 	vm.notes = musicNotes.notes;
 	vm.playSong = playSong;
-	vm.tempo = 120;
-	vm.tempoDown = tempoDown;
-	vm.tempoUp = tempoUp;
+	vm.saveSong = saveSong;
 	vm.songTitle = '';
 	vm.substitutions = musicSubstitutions.substitutions;
 	vm.standards = dataservice.getAllStandards();
-	vm.userSongs = dataservice.getAllUserSongs();
+	vm.tempo = 120;
+	vm.tempoDown = tempoDown;
+	vm.tempoUp = tempoUp;
+	vm.user = Auth.getCurrentUser();
+	vm.userSongs = [];
+
+	activate();
+
+	function activate() {
+		vm.userSongs = getAllUserSongs();
+		// getAllStandards();
+	}
 
 	function addMeasure(note, index) {
 		song.addMeasure(note, index, vm.beats);
@@ -32,8 +41,29 @@ function DashboardCtrl($scope, dataservice, musicNotes, song,
 
 	}
 
+	function getAllUserSongs() {
+		dataservice.getAllUserSongs()
+		.then(function(songs) {
+			console.log(songs.data)
+			vm.userSongs = songs.data;
+		});
+	}
+
 	function playSong() {
 
+	}
+
+	function saveSong() {
+		dataservice.saveSong({
+			title: vm.songTitle,
+			beatsPerMeasure: vm.beats,
+			tempo: vm.tempo,
+			song: song.song
+		})
+		.then(function() {
+			console.log('song saved')
+			getAllUserSongs();
+		})
 	}
 
 	function tempoDown() {
