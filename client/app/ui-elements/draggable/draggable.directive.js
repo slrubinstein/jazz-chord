@@ -13,14 +13,6 @@ function draggable() {
         helper: 'clone',
         zIndex: 10,
         scope: 'chords',
-        // start: function(event) {
-        //   // reset .droppables to be droppable
-        //   droppableFactory.droppable();
-        //   dragging.drag = true;
-        // },
-        // stop: function() {
-        //   dragging.drag = false;
-        // },
         revertDuration: 200
       });
     }

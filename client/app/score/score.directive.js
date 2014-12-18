@@ -4,7 +4,7 @@ angular.module('jazzChordApp')
   .directive('score', function () {
     return {
       templateUrl: 'app/score/score.html',
-      restrict: 'EA',
+      restrict: 'E',
       controller: 'ScoreCtrl',
       controllerAs: 'score'
     };
