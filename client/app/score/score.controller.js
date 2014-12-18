@@ -3,9 +3,10 @@
 angular.module('jazzChordApp')
   .controller('ScoreCtrl', ScoreCtrl);
 
-ScoreCtrl.$inject = ['$scope', 'song', 'musicSubstitutions'];
+ScoreCtrl.$inject = ['$scope', 'song', 'musicSubstitutions',
+											'musicChords'];
 
-function ScoreCtrl($scope, song, musicSubstitutions) {
+function ScoreCtrl($scope, song, musicSubstitutions, musicChords) {
 
 	var vm = this;
 
@@ -13,6 +14,7 @@ function ScoreCtrl($scope, song, musicSubstitutions) {
 	vm.makeSubs = makeSubs;
 	vm.song = song.song;
 	vm.substitutions = [];
+	vm.switchChords = switchChords;
 
 	
 	function deleteMeasure(index) {
@@ -21,6 +23,11 @@ function ScoreCtrl($scope, song, musicSubstitutions) {
 
 	function makeSubs(root) {
 		vm.substitutions = musicSubstitutions.getSubs(root);
+	}
+
+	function switchChords(root, type, beatIndex, measureIndex) {
+		var newBeat = musicChords.buildChord(root, type);
+		vm.song[measureIndex].splice(beatIndex, 1, newBeat)
 	}
 
  }

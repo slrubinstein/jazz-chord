@@ -15,7 +15,9 @@
 			<!-- Substitution dropdown menu -->
       <ul class="dropdown-menu" role="menu">
         <li ng-repeat="sub in score.substitutions">
-        	<a href="#">{{sub.root}} {{sub.type}}</a>
+        	<a href="#" 
+        		 ng-click="score.switchChords(sub.root, sub.type, $parent.$index, $parent.$parent.$index)"
+        		 >{{sub.root}} {{sub.type}}</a>
         </li>
       </ul>
     </div>
