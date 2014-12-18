@@ -12,15 +12,17 @@ function DashboardCtrl($scope, dataservice, musicNotes, song,
 	var vm = this;
 
 	vm.addMeasure = addMeasure;
-	vm.beats = 4;
+	vm.beats = song.beats;
 	vm.discardDraft = discardDraft;
+	vm.loadMySong = loadMySong;
+	vm.mySong = '';
 	vm.notes = musicNotes.notes;
 	vm.playSong = playSong;
 	vm.saveSong = saveSong;
 	vm.songTitle = '';
 	vm.substitutions = musicSubstitutions.substitutions;
 	vm.standards = dataservice.getAllStandards();
-	vm.tempo = 120;
+	vm.tempo = song.tempo;
 	vm.tempoDown = tempoDown;
 	vm.tempoUp = tempoUp;
 	vm.user = Auth.getCurrentUser();
@@ -44,8 +46,20 @@ function DashboardCtrl($scope, dataservice, musicNotes, song,
 	function getAllUserSongs() {
 		dataservice.getAllUserSongs()
 		.then(function(songs) {
-			console.log(songs.data)
 			vm.userSongs = songs.data;
+		});
+	}
+
+	function loadMySong() {
+		dataservice.loadMySong(vm.mySong._id)
+		.then(function(loadedSong) {
+			console.log(loadedSong.data.song)
+			if (loadedSong.data.song.length === 0) {
+				return;
+			};
+			song.song = loadedSong.data.song;
+
+			$scope.$broadcast('updateSong')
 		});
 	}
 
@@ -58,10 +72,10 @@ function DashboardCtrl($scope, dataservice, musicNotes, song,
 			title: vm.songTitle,
 			beatsPerMeasure: vm.beats,
 			tempo: vm.tempo,
+			author: vm.user._id || '',
 			song: song.song
 		})
 		.then(function() {
-			console.log('song saved')
 			getAllUserSongs();
 		})
 	}

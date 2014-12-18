@@ -26,8 +26,8 @@ function dataservice($http) {
     return $http.post('/api/songs', songData);
   }
 
-  function loadMySong() {
-    // return $http.put...
+  function loadMySong(songId) {
+    return $http.get('/api/songs/' + songId);
   }
 
   function loadStandard() {

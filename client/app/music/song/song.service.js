@@ -8,13 +8,16 @@ song.$inject = ['musicChords']
 function song(musicChords) {
 
   var song = [];
+  var beats = 4;
+  var tempo = 120;
 
   return {
     addMeasure: addMeasure,
+    beats: beats,
     deleteMeasure: deleteMeasure,
-    song: song
+    song: song,
+    tempo: tempo
     }
-
 
   function addMeasure(note, type, beats) {
     var type = 'M-triad';
