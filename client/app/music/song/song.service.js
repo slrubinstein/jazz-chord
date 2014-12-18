@@ -21,7 +21,7 @@ function song(musicChords) {
     var measure = [];
 
     for (var i = 0; i < beats; i++) {
-      var beat = musicChords.buildMajorChord(note, type);
+      var beat = musicChords.buildChord(note, type);
       measure.push(beat);
     }
     song.push(measure);

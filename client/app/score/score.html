@@ -7,24 +7,18 @@
 		<div class="btn-group" dropdown ng-repeat="beat in measure">
 
       <button type="button" 
-      		class="btn btn-default dropdown-toggle">
+      		class="btn btn-default dropdown-toggle"
+      		ng-click="score.makeSubs(beat.root)">
       		{{beat.root}} {{beat.type}}
 			</button>
 
 			<!-- Substitution dropdown menu -->
       <ul class="dropdown-menu" role="menu">
-        <li><a href="#">Action</a></li>
-        <li><a href="#">Another action</a></li>
-        <li><a href="#">Something else here</a></li>
-        <li class="divider"></li>
-        <li><a href="#">Separated link</a></li>
+        <li ng-repeat="sub in score.substitutions">
+        	<a href="#">{{sub.root}} {{sub.type}}</a>
+        </li>
       </ul>
     </div>
-
-
-
-
-
 
 
   </div>
