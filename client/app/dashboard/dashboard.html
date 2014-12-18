@@ -36,7 +36,7 @@
 		</div>
 
 		<div class="col-md-4 col-lg-4 data-service-buttons">
-			<div class="row">
+			<!-- <div class="row"> -->
 				<div class="input-group">
 				  <span class="input-group-addon">Title:</span>
 				  <input type="text" 
@@ -47,21 +47,33 @@
 				  			 ng-model="dash.songTitle"/>
 				</div>
 
-				<br>
-			  <button id="save" class="btn btn-default" ng-click="dash.saveSong()">Save This Song</button>
-				<button class="btn btn-default dash" ng-click="dash.discardDraft(dash)">Discard Draft</button>
+				<div class="col-md-6 col-lg-6 data-service-buttons">
+					<div class="row">
+
+			  		<button id="save" class="btn btn-default" ng-click="dash.saveSong()">Save This Song</button>
+					</div>
+
+					<div class="row song-selector">
+			  		My Songs:<select class="btn btn-default" ng-model="dash.mySong" ng-options="song as song for song in dash.userSongs"></select>
+
+					</div>
+					<div class="row song-selector">
+			 			Standards:<select class="btn btn-default" ng-model="dash.selectStandard" ng-options="song as song for song in dash.standards"></select>
+					</div>
+				</div>
+
+				<div class="col-md-6 col-lg-6 data-service-buttons">
+					<div class="row">
+						<button class="btn btn-default dash" ng-click="dash.discardDraft(dash)">Discard Draft</button>
+					</div>
+					<div class="row">
+						<button class="btn btn-default dash" ng-click="dash.loadMySong()">Load My Song</button>
+				</div>
+				<div class="row">
+					<button class="btn btn-default dash" ng-click="dash.loadStandard()">Load Standard</button>
+				</div>
 			</div>
 
-			<div class="row">
-			  My Songs:<select class="btn btn-default" ng-model="dash.mySong" ng-options="song as song for song in dash.userSongs"></select>
-
-				<button class="btn btn-default dash" ng-click="dash.loadMySong()">Load My Song</button>
-			</div>
-			<div class="row">
-			 	Standards:<select class="btn btn-default" ng-model="dash.selectStandard" ng-options="song as song for song in dash.standards"></select>
-
-				<button class="btn btn-default dash" ng-click="dash.loadStandard()">Load Standard</button>
-			</div>
 		</div>
 	</div>
 </div>

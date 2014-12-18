@@ -16,3 +16,15 @@ h1, h2 {
 	font-family: 'Chewy', normal;
 	margin-left: 30px;
 }
+
+.song-selector {
+	margin: 2px;
+	font-size: 14px;
+	height: 45px;
+
+	select {
+		margin: 4px;
+		margin-top: 6px;
+		min-width: 120px;
+	}
+}
