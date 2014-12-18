@@ -6,10 +6,11 @@
 
 		<div class="btn-group" dropdown ng-repeat="beat in measure">
 
-      <button type="button" 
-      		class="btn btn-default dropdown-toggle"
-      		ng-click="score.makeSubs(beat.root)">
-      		{{beat.root}} {{beat.type}}
+      <button droppable
+      				type="button" 
+		      		class="btn btn-default dropdown-toggle"
+		      		ng-click="score.makeSubs(beat.root)">
+      				{{beat.root}} {{beat.type}}
 			</button>
 
 			<!-- Substitution dropdown menu -->

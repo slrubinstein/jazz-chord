@@ -4,7 +4,7 @@ angular.module('jazzChordApp')
   .directive('draggable', draggable);
 
 function draggable() {
-	return {
+  return {
     restrict: 'A',
     link: function(scope, element, attrs) {
     	element.draggable({
@@ -12,6 +12,7 @@ function draggable() {
         cursor: 'grabbing',
         helper: 'clone',
         zIndex: 10,
+        scope: 'chords',
         // start: function(event) {
         //   // reset .droppables to be droppable
         //   droppableFactory.droppable();
@@ -22,6 +23,6 @@ function draggable() {
         // },
         revertDuration: 200
       });
-    },
+    }
   };
 }
