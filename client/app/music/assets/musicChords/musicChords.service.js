@@ -47,6 +47,24 @@ function musicChords(musicNotes) {
       case 'maj9':
         return [0, 4, 7, 11, 14];
         break;
+      case '7':
+        return [0, 4, 7, 10];
+        break;
+      case '9':
+        return [0, 4, 7, 10, 14];
+        break;
+      case '7-5':
+        return [0, 4, 6, 10];
+        break;
+      case 'vii\u00B07':
+        return [-1, 2, 5, 8];
+        break;
+      case '\u266fii\u00B07':
+        return [3, 6, 9, 12];
+        break;
+      case '\u266fIV7':
+        return [6, 10, 13, 16];
+        break;
     }
   }
 }
