@@ -48,6 +48,19 @@ exports.show = function (req, res, next) {
 };
 
 /**
+ * Get a single user's songs
+ */
+exports.getSongs = function (req, res, next) {
+  var userId = req.params.id;
+  User.findById(userId)
+      .populate('songs')
+      .exec(function (err, user) {
+    if (err) return next(err);
+    res.json(user.songs);
+  });
+};
+
+/**
  * Deletes a user
  * restriction: 'admin'
  */
@@ -76,6 +89,19 @@ exports.changePassword = function(req, res, next) {
     } else {
       res.send(403);
     }
+  });
+};
+
+/**
+ * Add a song to user
+ */
+exports.addSong = function(req, res, next) {
+  var userId = req.author;
+  User.findById(userId, function (err, user) {
+    if (err) return next(err);
+    if (!user) return res.send(401);
+    user.songs.push(req.song);
+    user.save();
   });
 };
 

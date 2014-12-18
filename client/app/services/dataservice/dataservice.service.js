@@ -18,12 +18,13 @@ function dataservice($http) {
 
   }
 
-  function getAllUserSongs() {
-    return $http.get('/api/songs');
+  function getAllUserSongs(userId) {
+    return $http.get('/api/users/' + userId + '/songs');
   }
 
   function saveSong(songData) {
-    return $http.post('/api/songs', songData);
+    return $http.post('/api/songs', songData)
+
   }
 
   function loadMySong(songId) {

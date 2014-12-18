@@ -4,10 +4,10 @@ angular.module('jazzChordApp')
   .controller('DashboardCtrl', DashboardCtrl);
 
 DashboardCtrl.$inject = ['$scope', 'dataservice', 'musicNotes',
-													'song', 'musicSubstitutions', 'Auth'];
+													'song', 'musicSubstitutions', 'Auth', 'User'];
 
 function DashboardCtrl($scope, dataservice, musicNotes, song,
-												musicSubstitutions, Auth) {
+												musicSubstitutions, Auth, User) {
 
 	var vm = this;
 
@@ -31,7 +31,12 @@ function DashboardCtrl($scope, dataservice, musicNotes, song,
 	activate();
 
 	function activate() {
-		vm.userSongs = getAllUserSongs();
+		Auth.isLoggedInAsync(function(loggedIn) {
+			if (loggedIn) {
+				vm.user = Auth.getCurrentUser();
+				vm.userSongs = getAllUserSongs(vm.user._id);		
+			}
+		});
 		// getAllStandards();
 	}
 
@@ -43,8 +48,8 @@ function DashboardCtrl($scope, dataservice, musicNotes, song,
 		song.song.length = 0;
 	}
 
-	function getAllUserSongs() {
-		dataservice.getAllUserSongs()
+	function getAllUserSongs(userId) {
+		dataservice.getAllUserSongs(userId)
 		.then(function(songs) {
 			vm.userSongs = songs.data;
 		});
@@ -74,7 +79,7 @@ function DashboardCtrl($scope, dataservice, musicNotes, song,
 			song: song.song
 		})
 		.then(function() {
-			getAllUserSongs();
+			getAllUserSongs(vm.user._id);
 		})
 	}
 
