@@ -1,13 +1,14 @@
 
 <div ui-sortable id="score" class="row" ng-model="score.song">
-	<div class="measure" ng-repeat="measure in score.song">
+	<div class="song" ng-repeat="measure in score.song">
 		<!-- btn-group = beats in measure and delete button -->
 
-		<div class="btn-group" dropdown ng-repeat="beat in measure">
-
+    <button class="btn btn-danger btn-xs del-btn">X</button>
+		<div class="btn-group measure" dropdown ng-repeat="beat in measure">
       <button droppable
       				type="button" 
 		      		class="btn btn-default dropdown-toggle"
+              ng-class="{lastBtn:$last}"
 		      		ng-click="score.makeSubs(beat.root)">
       				{{beat.root}} {{beat.type}}
 			</button>
