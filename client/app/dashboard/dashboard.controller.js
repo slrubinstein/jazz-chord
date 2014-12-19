@@ -4,10 +4,10 @@ angular.module('jazzChordApp')
   .controller('DashboardCtrl', DashboardCtrl);
 
 DashboardCtrl.$inject = ['$scope', 'dataservice', 'musicNotes',
-													'song', 'musicSubstitutions', 'Auth', 'User'];
+													'song', 'musicSubstitutions', 'Auth', 'User', '$modal'];
 
 function DashboardCtrl($scope, dataservice, musicNotes, song,
-												musicSubstitutions, Auth, User) {
+												musicSubstitutions, Auth, User, $modal, $modalInstance) {
 
 	var vm = this;
 
@@ -18,14 +18,14 @@ function DashboardCtrl($scope, dataservice, musicNotes, song,
 	vm.mySong = '';
 	vm.notes = musicNotes.notes;
 	vm.playSong = playSong;
-	vm.saveSong = saveSong;
+	vm.saveModal = saveModal;
 	vm.songTitle = '';
 	vm.substitutions = musicSubstitutions.substitutions;
 	vm.standards = dataservice.getAllStandards();
 	vm.tempo = song.tempo;
 	vm.tempoDown = tempoDown;
 	vm.tempoUp = tempoUp;
-	vm.user = Auth.getCurrentUser();
+	vm.user = {};
 	vm.userSongs = [];
 
 	activate();
@@ -70,17 +70,28 @@ function DashboardCtrl($scope, dataservice, musicNotes, song,
 
 	}
 
-	function saveSong() {
-		dataservice.saveSong({
-			title: vm.songTitle,
-			beatsPerMeasure: vm.beats,
-			tempo: vm.tempo,
-			author: vm.user._id || '',
-			song: song.song
-		})
-		.then(function() {
-			getAllUserSongs(vm.user._id);
-		})
+	function saveModal() {
+
+ 		var modalInstance = $modal.open({
+ 			templateUrl: 'saveModal.html',
+ 			controller: 'ModalCtrl',
+ 			controllerAs: 'modal',
+ 			resolve: {
+ 				songData: function() {
+ 					var songData = {
+ 						songTitle: vm.songTitle,
+ 						author: vm.user._id
+ 					};
+ 					return songData;
+ 				}
+ 			}
+ 		});
+
+ 		modalInstance.result.then(function() {
+ 			getAllUserSongs(vm.user._id);
+ 		});
+
+
 	}
 
 	function tempoDown() {
@@ -92,4 +103,6 @@ function DashboardCtrl($scope, dataservice, musicNotes, song,
 		song.tempo += 4;
 		vm.tempo = song.tempo;
 	}
+	
+
 }

@@ -57,7 +57,8 @@
 				<div class="col-md-6 col-lg-6 data-service-buttons">
 					<div class="row">
 
-			  		<button id="save" class="btn btn-default" ng-click="dash.saveSong()">Save This Song</button>
+			  		<button id="save" class="btn btn-default" 
+			  		ng-click="dash.saveModal()">Save This Song</button>
 					</div>
 
 					<div class="row song-selector">
@@ -84,3 +85,17 @@
 		</div>
 	</div>
 </div>
+
+<!-- Would be nice to move this to a separate file -->
+<script type="text/ng-template" id="saveModal.html">
+  <div class="modal-header">
+    <h3 class="modal-title">Save the selected song</h3>
+  </div>
+  <div class="modal-body">
+    <h4 class="modal-title">{{modal.songTitle}}</h4>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-primary" ng-click="modal.save()">Save</button>
+    <button class="btn btn-warning" ng-click="modal.cancel()">Cancel</button>
+  </div>
+</script>
