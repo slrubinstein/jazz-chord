@@ -15,6 +15,7 @@
     "font-awesome": ">=4.1.0",
     "lodash": "~2.4.1",
     "angular-ui-router": "~0.2.10",
+    "Audiolet": "https://github.com/oampo/Audiolet.git",
     "angular-ui-sortable": "~0.13.1"
   },
   "devDependencies": {

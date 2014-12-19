@@ -4,9 +4,10 @@ angular.module('jazzChordApp')
   .controller('ScoreCtrl', ScoreCtrl);
 
 ScoreCtrl.$inject = ['$scope', 'song', 'musicSubstitutions',
-											'musicChords'];
+											'musicChords', 'playerFactory'];
 
-function ScoreCtrl($scope, song, musicSubstitutions, musicChords) {
+function ScoreCtrl($scope, song, musicSubstitutions, musicChords,
+									 playerFactory) {
 
 	var vm = this;
 
@@ -27,7 +28,8 @@ function ScoreCtrl($scope, song, musicSubstitutions, musicChords) {
 
 	function switchChords(root, type, beatIndex, measureIndex) {
 		var newBeat = musicChords.buildChord(root, type);
-		vm.song[measureIndex].splice(beatIndex, 1, newBeat)
+		vm.song[measureIndex].splice(beatIndex, 1, newBeat);
+		playerFactory.playOne(newBeat);
 	}
 
 	$scope.$on('updateSong', function(event, loadedSong) {
