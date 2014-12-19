@@ -16,7 +16,7 @@ function DashboardCtrl($scope, dataservice, musicNotes, song,
 	vm.discardDraft = discardDraft;
 	vm.loadMySong = loadMySong;
 	vm.mySong = '';
-	vm.notes = musicNotes.notes;
+	vm.notes = musicNotes.noteNames;
 	vm.playSong = playSong;
 	vm.saveModal = saveModal;
 	vm.songTitle = '';

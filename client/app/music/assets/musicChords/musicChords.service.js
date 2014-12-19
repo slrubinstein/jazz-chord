@@ -9,7 +9,8 @@ musicChords.$inject = ['musicNotes'];
 
 function musicChords(musicNotes) {
 
-  var musicNotes = musicNotes.notes;
+  var noteNames = musicNotes.noteNames;
+  var notesData = musicNotes.notesData;
 
   return {
     buildChord: buildChord,
@@ -22,15 +23,26 @@ function musicChords(musicNotes) {
     chord.type = type;
     chord.intervals = getIntervals(type);
     chord.notes = getChordNotes(root, chord.intervals);
-
+    chord.frequences = getFrequencies(root, chord.intervals);
+    console.log(chord)
     return chord;
   }
 
   function getChordNotes(root, intervals) {
-    var notes = intervals.map(function(i) {
-      return musicNotes[ musicNotes.indexOf(root) + i ];
+    var chordNotes = intervals.map(function(i) {
+      return noteNames[ noteNames.indexOf(root) + i ];
     })
-    return notes;
+    return chordNotes;
+  }
+
+  function getFrequencies(root, intervals) {
+    var frequencies = [];
+
+    intervals.forEach(function(i) {
+      var thisFreq = notesData [ noteNames.indexOf(root) + i + 48].frequency;
+      frequencies.push(thisFreq)
+    });
+    return frequencies;
   }
 
   function getIntervals(type) {
