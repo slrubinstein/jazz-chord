@@ -3,9 +3,9 @@
 angular.module('jazzChordApp')
   .factory('song', song)
 
-song.$inject = ['musicChords', 'playerFactory']
+song.$inject = ['musicChords', 'player']
 
-function song(musicChords, playerFactory) {
+function song(musicChords, player) {
 
   var song = [];
   var beats = 4;
@@ -30,7 +30,7 @@ function song(musicChords, playerFactory) {
 
     song.push(measure);
 
-    playerFactory.playOne(measure[0])
+    player.playOne(measure[0])
   }
 
   function deleteMeasure(index) {

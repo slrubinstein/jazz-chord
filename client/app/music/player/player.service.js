@@ -1,9 +1,9 @@
 'use strict';
 
 angular.module('jazzChordApp')
-  .factory('playerFactory', playerFactory);
+  .factory('player', player);
 
-function playerFactory() {
+function player() {
 
   return {
     makeSynth: function() {
@@ -35,39 +35,7 @@ function playerFactory() {
       return Synth;
     },
 
-    determineChordType: function(chordRoot, currentRoot, currentChord) {
-      var chordType = '';
-
-      var notes = ['A', 'B\u266d', 'B', 'C', 'C\u266f', 'D',
-                       'E\u266d', 'E', 'F', 'F\u266f', 'G', 'A\u266d'];
-            
-        if (currentRoot === chordRoot) {
-          chordType = currentChord;
-        } 
-        else {
-          var distance = (notes.indexOf(currentRoot) - notes.indexOf(chordRoot));
-          if (distance === 4 || distance === -8) {
-            chordType = 'iii' + currentChord;
-          } 
-          else if (distance === 9 || distance === -3) {
-            chordType = 'vi' + currentChord;
-          }
-          else if (distance === -1 || distance === 11) {
-          chordType = 'vii' + currentChord;
-          }
-          else if (distance === -9 || distance === 3) {
-            chordType = '\u266fii' + currentChord;
-          }
-          else if (distance === 6 || distance == -6) {
-            chordType = '\u266fIV' + currentChord;
-          }
-        }
-      return chordType;
-    },
-
     playSong: function(song, bpm) {
-      var self = this;
-
       var Synth = this.makeSynth();
       var SchedulerApp = function(song, bpm) {
         this.audiolet = new Audiolet();
@@ -79,17 +47,13 @@ function playerFactory() {
 
           measure.forEach(function(beat) {
 
-            var chordFreqs = [];
+            var chordFreqs = beat.frequencies;
             // check for rests
-            if (beat.currentChord === '/') {
+            if (beat === '/') {
               chordFreqs = [];
             }
             else {
-              var chordType = self.determineChordType(beat.root, beat.currentroot, beat.currentChord)
-              var frequencies = beat.chords[chordType].frequencies;
-              frequencies.forEach(function(f) {
-                chordFreqs.push(f);
-              });
+              chordFreqs = beat.frequencies;
             }
             allChords.push(chordFreqs);
           })
@@ -113,34 +77,27 @@ function playerFactory() {
     //-------------------------------------------------------------//
 
     playOne: function(beat) {
-        var self = this;
-        var Synth = this.makeSynth();
+      var Synth = this.makeSynth();
+      var SchedulerApp = function() {
 
-        var SchedulerApp = function() {
-            this.audiolet = new Audiolet();
-
-            var chordFreqs = [];
-
-            // var chordType = self.determineChordType(beat.root, beat.currentroot, beat.currentChord)
-
-            var frequencies = beat.frequencies;
-
-            var chordPattern = new PSequence([frequencies]);
-
-            this.audiolet.scheduler.play([chordPattern], 1,
-                                         this.playChord.bind(this));
-        }
-
-        SchedulerApp.prototype.playChord = function(chord) {
-
-          for (var i = 0; i < chord.length; i++) {
-              var frequency = chord[i];
-              var synth = new Synth(this.audiolet, frequency);
-              synth.connect(this.audiolet.output);
-          }
-        };
-
-        var app = new SchedulerApp(beat);
+        this.audiolet = new Audiolet();
+        var chordFreqs = [];
+        var frequencies = beat.frequencies;
+        var chordPattern = new PSequence([frequencies]);
+        this.audiolet.scheduler.play([chordPattern], 1,
+                                     this.playChord.bind(this));
       }
+
+      SchedulerApp.prototype.playChord = function(chord) {
+
+        for (var i = 0; i < chord.length; i++) {
+            var frequency = chord[i];
+            var synth = new Synth(this.audiolet, frequency);
+            synth.connect(this.audiolet.output);
+        }
+      };
+
+      var app = new SchedulerApp(beat);
+    }
   }
 }

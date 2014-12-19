@@ -3,11 +3,13 @@
 angular.module('jazzChordApp')
   .controller('DashboardCtrl', DashboardCtrl);
 
-DashboardCtrl.$inject = ['$scope', 'dataservice', 'musicNotes',
-													'song', 'musicSubstitutions', 'Auth', 'User', '$modal'];
+DashboardCtrl.$inject = ['$scope', 'dataservice', 'musicNotes', 'song',
+												 'musicSubstitutions', 'Auth', 'User', '$modal',
+												 'player'];
 
 function DashboardCtrl($scope, dataservice, musicNotes, song,
-												musicSubstitutions, Auth, User, $modal, $modalInstance) {
+												musicSubstitutions, Auth, User, $modal, 
+												player) {
 
 	var vm = this;
 
@@ -81,7 +83,7 @@ function DashboardCtrl($scope, dataservice, musicNotes, song,
 	}
 
 	function playSong() {
-
+		player.playSong(song.song, song.tempo);
 	}
 
 	function saveModal() {
