@@ -72,6 +72,10 @@ function DashboardCtrl($scope, dataservice, musicNotes, song,
 	}
 
 	function loadMySong() {
+		if (!vm.mySong._id) {
+			return;
+		}
+
 		dataservice.loadMySong(vm.mySong._id)
 		.then(function(loadedSong) {
 			if (loadedSong.data.song.length === 0) {
