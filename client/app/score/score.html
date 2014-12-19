@@ -3,7 +3,9 @@
 	<div class="song" ng-repeat="measure in score.song">
 		<!-- btn-group = beats in measure and delete button -->
 
-    <button class="btn btn-danger btn-xs del-btn">X</button>
+    <button class="btn btn-danger btn-xs del-btn"
+            ng-click="score.deleteMeasure($index)">X</button>
+
 		<div class="btn-group measure" dropdown ng-repeat="beat in measure">
       <button droppable
       				type="button" 

@@ -16,8 +16,9 @@ function link(scope, element, attrs) {
     drop: function(event, ui) {
     	var root = ui.draggable.text(),
     			type = 'M-triad',
-    			beatIndex = $(event.target).parent().index(),
-    			measureIndex = $(event.target).closest('.measure').index(),
+          // beatIndex must be -1 to account for delete button
+    			beatIndex = $(event.target).parent().index() - 1,
+    			measureIndex = $(event.target).closest('.song').index(),
     			ctrl = scope.$parent.$parent.score;
 
     	ctrl.switchChords(root, type, beatIndex, measureIndex);
