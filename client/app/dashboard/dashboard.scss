@@ -25,6 +25,18 @@ h1, h2 {
 	select {
 		margin: 4px;
 		margin-top: 6px;
-		min-width: 120px;
+		min-width: 100px;
 	}
+}
+
+#q-mark {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 16px;
+  margin-top: 4.2px;
+  border-radius: 15px; 
+  margin-bottom: 4.2px;
+  line-height: 1;
 }

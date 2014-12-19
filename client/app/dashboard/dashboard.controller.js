@@ -84,10 +84,12 @@ function DashboardCtrl($scope, dataservice, musicNotes, song,
 	}
 
 	function tempoDown() {
-
+		song.tempo -= 4;
+		vm.tempo = song.tempo;
 	}
 
 	function tempoUp() {
-
+		song.tempo += 4;
+		vm.tempo = song.tempo;
 	}
 }
