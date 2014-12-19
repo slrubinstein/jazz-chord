@@ -45,7 +45,21 @@ function DashboardCtrl($scope, dataservice, musicNotes, song,
 	}
 
 	function discardDraft() {
-		song.song.length = 0;
+		var modalInstance = $modal.open({
+ 			templateUrl: 'discardModal.html',
+ 			controller: 'ModalCtrl',
+ 			controllerAs: 'modal',
+ 			resolve: {
+ 				songData: function() {
+ 					var songData = {
+ 						songTitle: vm.songTitle,
+ 						author: vm.user._id
+ 					};
+ 					return songData;
+ 				}
+ 			}
+ 		});
+
 	}
 
 	function getAllUserSongs(userId) {
@@ -90,7 +104,6 @@ function DashboardCtrl($scope, dataservice, musicNotes, song,
  		modalInstance.result.then(function() {
  			getAllUserSongs(vm.user._id);
  		});
-
 
 	}
 

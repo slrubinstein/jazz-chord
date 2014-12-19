@@ -11,10 +11,28 @@ angular.module('jazzChordApp')
 
  	var vm = this;
 
- 	vm.songTitle = songData.songTitle;
  	vm.author = songData.author;
+ 	vm.cancel = cancel;
+ 	vm.deleteFromDB = deleteFromDB;
+ 	vm.discard = discard;
+ 	vm.save = save;
+ 	vm.songTitle = songData.songTitle;
 
- 	vm.save = function() {
+  function cancel () {
+    $modalInstance.dismiss('cancel');
+  };
+
+  function deleteFromDB() {
+  	console.log('Not yet supported')
+  	$modalInstance.close('not yet supported');
+  }
+
+  function discard() {
+  	song.song.length = 0;
+  	$modalInstance.close('draft discarded');
+  }
+
+ 	function save() {
  		dataservice.saveSong({
 			title: vm.songTitle,
 			beatsPerMeasure: song.beats,
@@ -27,8 +45,5 @@ angular.module('jazzChordApp')
 		})
  	}
 
-  vm.cancel = function () {
-    $modalInstance.dismiss('cancel');
-  };
 
 }

@@ -99,3 +99,18 @@
     <button class="btn btn-warning" ng-click="modal.cancel()">Cancel</button>
   </div>
 </script>
+
+<script type="text/ng-template" id="discardModal.html">
+  <div class="modal-header">
+    <h3 class="modal-title">Discard this draft?</h3>
+    <h3 class="modal-title">Or delete from database?</h3>
+  </div>
+  <div class="modal-body">
+    <h4 class="modal-title">{{modal.songTitle}}</h4>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-danger" ng-click="modal.discard()">Discard draft</button>
+    <button class="btn btn-danger" ng-click="modal.deleteFromDB()">Permanently delete</button>
+    <button class="btn btn-warning" ng-click="modal.cancel()">Cancel</button>
+  </div>
+</script>
