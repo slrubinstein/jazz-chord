@@ -113,37 +113,34 @@ function playerFactory() {
     //-------------------------------------------------------------//
 
     playOne: function(beat) {
-      var self = this;
-      var Synth = this.makeSynth();
+        var self = this;
+        var Synth = this.makeSynth();
 
-      var SchedulerApp = function() {
-        this.audiolet = new Audiolet();
+        var SchedulerApp = function() {
+            this.audiolet = new Audiolet();
 
-        var chordFreqs = [];
+            var chordFreqs = [];
 
-        var chordType = self.determineChordType(beat.root, beat.currentroot, beat.currentChord)
+            // var chordType = self.determineChordType(beat.root, beat.currentroot, beat.currentChord)
 
-        var frequencies = beat.chords[chordType].frequencies;
+            var frequencies = beat.frequencies;
 
-        frequencies.forEach(function(f) {
-          chordFreqs.push(f);
-        });
+            var chordPattern = new PSequence([frequencies]);
 
-        var chordPattern = new PSequence([chordFreqs]);
-
-        this.audiolet.scheduler.play([chordPattern], 1,
-                                     this.playChord.bind(this));
-      }
-
-      SchedulerApp.prototype.playChord = function(chord) {
-        for (var i = 0; i < chord.length; i++) {
-          var frequency = chord[i];
-          var synth = new Synth(this.audiolet, frequency);
-          synth.connect(this.audiolet.output);
+            this.audiolet.scheduler.play([chordPattern], 1,
+                                         this.playChord.bind(this));
         }
-      };
 
-      var app = new SchedulerApp(beat);
-    }
+        SchedulerApp.prototype.playChord = function(chord) {
+
+          for (var i = 0; i < chord.length; i++) {
+              var frequency = chord[i];
+              var synth = new Synth(this.audiolet, frequency);
+              synth.connect(this.audiolet.output);
+          }
+        };
+
+        var app = new SchedulerApp(beat);
+      }
   }
 }

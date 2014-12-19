@@ -30,7 +30,7 @@ function song(musicChords, playerFactory) {
 
     song.push(measure);
 
-    // playerFactory.playOne(measure[0])
+    playerFactory.playOne(measure[0])
   }
 
   function deleteMeasure(index) {

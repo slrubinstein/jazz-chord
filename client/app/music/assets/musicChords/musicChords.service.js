@@ -23,8 +23,7 @@ function musicChords(musicNotes) {
     chord.type = type;
     chord.intervals = getIntervals(type);
     chord.notes = getChordNotes(root, chord.intervals);
-    chord.frequences = getFrequencies(root, chord.intervals);
-    console.log(chord)
+    chord.frequencies = getFrequencies(root, chord.intervals);
     return chord;
   }
 
