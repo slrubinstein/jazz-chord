@@ -4,46 +4,47 @@ angular.module('jazzChordApp')
   .controller('ModalCtrl', ModalCtrl) ;
 
  ModalCtrl.$inject = ['$modalInstance', 'song', 'songData',
- 											'dataservice'];
+                      'dataservice'];
 
  function ModalCtrl($modalInstance, song, songData,
- 										dataservice) {
+                    dataservice) {
 
- 	var vm = this;
+  var vm = this;
 
- 	vm.author = songData.author || '';
- 	vm.cancel = cancel;
- 	vm.deleteFromDB = deleteFromDB;
- 	vm.discard = discard;
- 	vm.save = save;
- 	vm.songTitle = songData.songTitle || '';
+  vm.author = songData.author || '';
+  vm.cancel = cancel;
+  vm.deleteFromDB = deleteFromDB;
+  vm.discard = discard;
+  vm.save = save;
+  vm.songTitle = songData.songTitle || '';
 
   function cancel () {
     $modalInstance.dismiss('cancel');
   };
 
   function deleteFromDB() {
-  	console.log('Not yet supported')
-  	$modalInstance.close('not yet supported');
+    console.log('Not yet supported')
+    $modalInstance.close('not yet supported');
   }
 
   function discard() {
-  	song.song.length = 0;
-  	$modalInstance.close('draft discarded');
+    song.song.length = 0;
+    $modalInstance.close('draft discarded');
   }
 
- 	function save() {
- 		dataservice.saveSong({
-			title: vm.songTitle,
-			beatsPerMeasure: song.beats,
-			tempo: song.tempo,
-			author: vm.author || '',
-			song: song.song
-		})
-		.then(function() {
-			$modalInstance.close('song saved');
-		})
- 	}
+  function save() {
+    dataservice.saveSong({
+      title: vm.songTitle,
+      beatsPerMeasure: song.beats,
+      tempo: song.tempo,
+      author: vm.author || '',
+      song: song.song
+    })
+    .then(function() {
+      $modalInstance.close({msg: 'song saved',
+                            songTitle: vm.songTitle});
+    })
+  }
 
 
 }
