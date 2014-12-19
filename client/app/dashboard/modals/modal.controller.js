@@ -41,8 +41,7 @@ angular.module('jazzChordApp')
 			song: song.song
 		})
 		.then(function() {
-			$modalInstance.close({msg: 'song saved',
-                            songTitle: vm.songTitle});
+			$modalInstance.close('song saved');
 		})
  	}
 

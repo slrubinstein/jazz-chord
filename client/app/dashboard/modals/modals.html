@@ -1,0 +1,66 @@
+<!-- SAVE MODAL -->
+
+<script type="text/ng-template" id="saveModal.html">
+  <div class="modal-header">
+    <h3 class="modal-title">Save the selected song</h3>
+  </div>
+  <div class="modal-body">
+    <h4 class="modal-title">
+    	<div class="input-group">
+	    	<span class="input-group-addon">Title:</span>
+	    	<input type="text" 
+			  			 id="song-title"
+			  			 class="form-control" 
+			  			 placeholder="song title" 
+			  			 value="{{modal.songTitle}}" 
+			  			 ng-model="modal.songTitle"/>
+			 </div>
+    </h4>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-primary" ng-click="modal.save()">Save</button>
+    <button class="btn btn-warning" ng-click="modal.cancel()">Cancel</button>
+  </div>
+</script>
+
+<!-- DISCARD MODAL -->
+
+<script type="text/ng-template" id="discardModal.html">
+  <div class="modal-header">
+    <h3 class="modal-title">Discard this draft?</h3>
+    <h3 class="modal-title">Or delete from database?</h3>
+  </div>
+  <div class="modal-body">
+    <h4 class="modal-title">{{modal.songTitle}}</h4>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-danger" ng-click="modal.discard()">Discard draft</button>
+    <button class="btn btn-danger" ng-click="modal.deleteFromDB()">Permanently delete</button>
+    <button class="btn btn-warning" ng-click="modal.cancel()">Cancel</button>
+  </div>
+</script>
+
+<!-- INFO MODAL -->
+
+<script type="text/ng-template" id="infoModal.html">
+  <div class="modal-header">
+    <h2 class="modal-title">Jazz Chord Substitutor</h2>
+  </div>
+  <div class="modal-body">
+  	<p>1. Click on a Note Name to add a Measure to your Song.</p>
+  	<p>2. Drag a Note Name to a Beat in a Measure to change that Beat.</p>
+  	<p>3. Click on a Beat in a Measure to try common Substitutions.</p>
+  	<p>
+  		<a href="http://en.wikipedia.org/wiki/Chord_substitution">Helpful explanation of Chord Substitution from Wikipedia.
+  		</a>
+  	</p>
+  </div>
+  <div class="modal-footer my-footer">
+  	<p>Jazz Chord Substitutor was created by Steve Rubinstein on 
+  		the MEAN stack (Mongo, Express, Angular, Node) using the
+  		Angular Fullstack Generator.
+  		<br/>
+  		<br/>
+    <button class="btn btn-warning" ng-click="modal.cancel()">Exit</button>
+  </div>
+</script>

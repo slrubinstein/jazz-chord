@@ -16,12 +16,13 @@ function DashboardCtrl($scope, dataservice, musicNotes, song,
 	vm.addMeasure = addMeasure;
 	vm.beats = song.beats;
 	vm.discardDraft = discardDraft;
+	vm.getInfo = getInfo;
 	vm.loadMySong = loadMySong;
 	vm.mySong = '';
 	vm.notes = musicNotes.noteNames;
 	vm.playSong = playSong;
 	vm.saveModal = saveModal;
-	vm.songTitle = '';
+	vm.songTitle = song.title;
 	vm.substitutions = musicSubstitutions.substitutions;
 	vm.standards = dataservice.getAllStandards();
 	vm.tempo = song.tempo;
@@ -71,6 +72,25 @@ function DashboardCtrl($scope, dataservice, musicNotes, song,
 		});
 	}
 
+	function getInfo() {
+
+		var modalInstance = $modal.open({
+ 			templateUrl: 'infoModal.html',
+ 			resolve: {
+ 				songData: function() {
+ 					var songData = {
+ 						songTitle: vm.songTitle,
+ 						author: vm.user._id
+ 					};
+ 					return songData;
+ 				}
+ 			},
+ 			controller: 'ModalCtrl',
+ 			controllerAs: 'modal',
+ 		});
+
+	}
+
 	function loadMySong() {
 		if (!vm.mySong._id) {
 			return;
@@ -92,6 +112,11 @@ function DashboardCtrl($scope, dataservice, musicNotes, song,
 
 	function saveModal() {
 
+		if (vm.songTitle.length === 0 ||
+				song.song.length === 0) {
+			return;
+		}
+
  		var modalInstance = $modal.open({
  			templateUrl: 'saveModal.html',
  			controller: 'ModalCtrl',
@@ -107,7 +132,9 @@ function DashboardCtrl($scope, dataservice, musicNotes, song,
  			}
  		});
 
- 		modalInstance.result.then(function() {
+ 		modalInstance.result.then(function(result) {
+ 			song.title = result.songTitle;
+ 			vm.songTitle = song.title;
  			getAllUserSongs(vm.user._id);
  		});
 

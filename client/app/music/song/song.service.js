@@ -10,13 +10,15 @@ function song(musicChords, player) {
   var song = [];
   var beats = 4;
   var tempo = 120;
+  var title = '';
 
   return {
     addMeasure: addMeasure,
     beats: beats,
     deleteMeasure: deleteMeasure,
     song: song,
-    tempo: tempo
+    tempo: tempo,
+    title: title
     }
 
   function addMeasure(note, beats) {
