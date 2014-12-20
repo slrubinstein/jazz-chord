@@ -7,9 +7,11 @@ musicSubstitutions.$inject = ['musicNotes', 'musicChords'];
 
 function musicSubstitutions(musicNotes, musicChords) {
 
-  var subTypes = ['M-triad', 'maj6', 'maj7', 'maj9',
+  var subTypes = ['M', 'maj6', 'maj7', 'maj9',
                   '7', '9', '7-5', 'vii\u00B07', 
-                  '\u266fii\u00B07', '\u266fIV7'];
+                  '\u266fii\u00B07', '\u266fIV7',
+                  'm', 'm6', 'm7', 'm7-5',
+                  'iiim7', 'vim7'];
 
   return {
     getSubs: getSubs

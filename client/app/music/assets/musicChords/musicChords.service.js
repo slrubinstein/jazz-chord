@@ -46,7 +46,8 @@ function musicChords(musicNotes) {
 
   function getIntervals(type) {
     switch(type) {
-      case 'M-triad':
+      // major substitutions
+      case 'M':
         return [0, 4, 7];
         break;
       case 'maj6':
@@ -58,6 +59,7 @@ function musicChords(musicNotes) {
       case 'maj9':
         return [0, 4, 7, 11, 14];
         break;
+      // dominant 7 substitutions
       case '7':
         return [0, 4, 7, 10];
         break;
@@ -75,6 +77,26 @@ function musicChords(musicNotes) {
         break;
       case '\u266fIV7':
         return [6, 10, 13, 16];
+        break;
+      // minor substitutions
+      case 'm':
+        return [0, 3, 7];
+        break;
+      case 'm6':
+        return [0, 3, 7, 9];
+        break;
+      case 'm7':
+        return [0, 3, 7, 10];
+        break;
+      case 'm7-5':
+        return [0, 3, 6, 10];
+        break;
+      // tonic substitutions
+      case 'iiim7':
+        return [-3, 0, 4, 7];
+        break;
+      case 'vim7':
+        return [4, 7, 11, 14];
         break;
     }
   }

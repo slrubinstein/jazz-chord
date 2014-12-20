@@ -22,7 +22,7 @@ function song(musicChords, player) {
     }
 
   function addMeasure(note, beats) {
-    var type = 'M-triad';
+    var type = 'M';
     var measure = [];
 
     for (var i = 0; i < beats; i++) {
