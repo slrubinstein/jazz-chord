@@ -23,16 +23,22 @@ function ScoreCtrl($scope, song, musicSubstitutions, musicChords,
 	}
 
 	function makeSubs(root) {
+		if (root === '/') {
+			vm.substitutions = [];
+			return;
+		}
 		vm.substitutions = musicSubstitutions.getSubs(root);
 	}
 
-	function switchChords(root, type, beatIndex) {
+	function switchChords(root, type, beatIndex, measureIndex) {
 
 		// should move to a directive
-		var measureIndex = $(event.target).closest('.song').index()
+		if (measureIndex === undefined) {
+			measureIndex = $(event.target).closest('.song').index();
+		}
 
 		var newBeat = musicChords.buildChord(root, type);
-		vm.song[measureIndex].splice(beatIndex, 1, newBeat);
+		song.song[measureIndex].splice(beatIndex, 1, newBeat);
 		player.playOne(newBeat);
 	}
 

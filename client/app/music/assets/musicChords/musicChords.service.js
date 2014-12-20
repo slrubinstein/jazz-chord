@@ -18,13 +18,18 @@ function musicChords(musicNotes) {
   }
 
   function buildChord(root, type) {
-    var chord = {};
-    chord.root = root;
-    chord.type = type;
-    chord.intervals = getIntervals(type);
-    chord.notes = getChordNotes(root, chord.intervals);
-    chord.frequencies = getFrequencies(root, chord.intervals);
-    chord.altRoot = getAltRoot(chord.root, chord.type);
+    if (root === 'rest') {
+      var chord = {root: '/'};
+    } else {
+      var chord = {};
+      chord.root = root;
+      chord.type = type;
+      chord.intervals = getIntervals(type);
+      chord.notes = getChordNotes(root, chord.intervals);
+      chord.frequencies = getFrequencies(root, chord.intervals);
+      chord.altRoot = getAltRoot(chord.root, chord.type);
+    }
+
     return chord;
   }
 
