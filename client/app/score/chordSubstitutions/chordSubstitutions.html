@@ -20,7 +20,7 @@
 		    		class="substitution">
 					<a href="#" 
 		 				 ng-click="score.switchChords(sub.root, sub.type, $parent.$parent.$index)">
-							{{sub.root}}{{sub.type}}
+							{{sub.altRoot || sub.root}}{{sub.type}}
  							&#40; {{sub.notes.join(', ')}} &#41; 
 	    		</a>
 		    </li>

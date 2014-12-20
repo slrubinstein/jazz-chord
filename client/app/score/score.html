@@ -6,13 +6,15 @@
     <button class="btn btn-danger btn-xs del-btn"
             ng-click="score.deleteMeasure($index)">X</button>
 
-		<div class="btn-group measure" dropdown ng-repeat="beat in measure">
+		<div dropdown
+         class="btn-group measure" 
+         ng-repeat="beat in measure">
       <button droppable
       				type="button" 
 		      		class="btn btn-default dropdown-toggle"
               ng-class="{lastBtn:$last}"
 		      		ng-click="score.makeSubs(beat.root)">
-      				{{beat.root}} {{beat.type}}
+      				{{beat.altRoot || beat.root}} {{beat.type}}
 			</button>
 
 			<!-- Substitution dropdown menu -->

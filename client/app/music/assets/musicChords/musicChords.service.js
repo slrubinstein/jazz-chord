@@ -24,7 +24,31 @@ function musicChords(musicNotes) {
     chord.intervals = getIntervals(type);
     chord.notes = getChordNotes(root, chord.intervals);
     chord.frequencies = getFrequencies(root, chord.intervals);
+    chord.altRoot = getAltRoot(chord.root, chord.type);
     return chord;
+  }
+
+  // for chords with a different root note
+  function getAltRoot(root, type) {
+    switch (type) {
+      case'm7 (iii)':
+        return noteNames[ noteNames.indexOf(root ) + 4];
+        break;
+      case 'm7 (vi)':
+        return noteNames[ noteNames.indexOf(root) + 9];
+        break;
+      case '7 (vii\u00B0)':
+        return noteNames[ noteNames.indexOf(root) + 11];
+        break;
+      case '7 (\u266fii\u00B0)':
+        return noteNames[ noteNames.indexOf(root) + 3];
+        break;
+      case '7 (IV\u266f)':
+        return noteNames[ noteNames.indexOf(root) + 6]; 
+        break;
+      default:
+        return null;
+    }
   }
 
   function getChordNotes(root, intervals) {
@@ -57,26 +81,26 @@ function musicChords(musicNotes) {
         return [0, 4, 7, 11];
         break;
       case 'maj9':
-        return [0, 4, 7, 11, 14];
+        return [0, 4, 7, 11, 2];
         break;
       // dominant 7 substitutions
       case '7':
         return [0, 4, 7, 10];
         break;
       case '9':
-        return [0, 4, 7, 10, 14];
+        return [0, 4, 7, 10, 2];
         break;
       case '7-5':
         return [0, 4, 6, 10];
         break;
-      case 'vii\u00B07':
-        return [-1, 2, 5, 8];
+      case '7 (vii\u00B0)':
+        return [11, 2, 5, 8];
         break;
-      case '\u266fii\u00B07':
+      case '7 (\u266fii\u00B0)':
         return [3, 6, 9, 12];
         break;
-      case '\u266fIV7':
-        return [6, 10, 13, 16];
+      case '7 (IV\u266f)':
+        return [6, 10, 13, 4];
         break;
       // minor substitutions
       case 'm':
@@ -92,11 +116,11 @@ function musicChords(musicNotes) {
         return [0, 3, 6, 10];
         break;
       // tonic substitutions
-      case 'iiim7':
-        return [-3, 0, 4, 7];
+      case 'm7 (iii)':
+        return [4, 7, 11, 2];
         break;
-      case 'vim7':
-        return [4, 7, 11, 14];
+      case 'm7 (vi)':
+        return [9, 0, 4, 7];
         break;
     }
   }
