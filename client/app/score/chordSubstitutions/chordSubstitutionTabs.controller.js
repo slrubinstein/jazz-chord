@@ -10,7 +10,7 @@ function ChordsubstitutiontabsCtrl() {
 
 	vm.tabs = [
     { title:'Major Subs', slice: [0, 3] },
-    { title: 'D7 Subs', slice: [4, 9] },
+    { title: 'Dom7 Subs', slice: [4, 9] },
     { title: 'minor Subs', slice: [10, 13] },
     { title: 'Tonic Subs', slice: [14, 16] },
   ];

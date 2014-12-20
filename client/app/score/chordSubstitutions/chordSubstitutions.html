@@ -16,11 +16,12 @@
     		disabled="tab.disabled"
     		ng-click="$event.stopPropagation()">
 
-		    <li ng-repeat="sub in score.substitutions.slice(tab.slice[0], tab.slice[1])">
+		    <li ng-repeat="sub in score.substitutions.slice(tab.slice[0], tab.slice[1])"
+		    		class="substitution">
 					<a href="#" 
 		 				 ng-click="score.switchChords(sub.root, sub.type, $parent.$parent.$index)">
-{{sub.root}}{{sub.type}}
- &#40; {{sub.notes.join(', ')}} &#41; 
+							{{sub.root}}{{sub.type}}
+ 							&#40; {{sub.notes.join(', ')}} &#41; 
 	    		</a>
 		    </li>
 

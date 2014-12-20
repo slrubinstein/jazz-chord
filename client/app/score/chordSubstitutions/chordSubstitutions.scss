@@ -1,19 +1,11 @@
-/*.sub-notes {
-	height: 32px;
-	padding-bottom: 0px;
-	padding-top: 6px;
-	margin-top: -8px;
-	margin-bottom: 2px;
-}
-*/
-/*.sub-notes {
-	min-width: 138px;
-}
-
-.sub-names {
-	min-width: 65px;
-}*/
-
 .subs-menu {
-	min-width: 405px;
+	min-width: 214px;
+	
+	tab:hover {
+		cursor: pointer;
+	}
+}
+
+.substitution {
+	margin: 18px;
 }
