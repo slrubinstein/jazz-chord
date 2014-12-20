@@ -26,7 +26,11 @@ function ScoreCtrl($scope, song, musicSubstitutions, musicChords,
 		vm.substitutions = musicSubstitutions.getSubs(root);
 	}
 
-	function switchChords(root, type, beatIndex, measureIndex) {
+	function switchChords(root, type, beatIndex) {
+
+		// should move to a directive
+		var measureIndex = $(event.target).closest('.song').index()
+
 		var newBeat = musicChords.buildChord(root, type);
 		vm.song[measureIndex].splice(beatIndex, 1, newBeat);
 		player.playOne(newBeat);

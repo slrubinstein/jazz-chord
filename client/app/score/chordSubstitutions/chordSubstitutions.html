@@ -15,14 +15,15 @@
     		active="tab.active" 
     		disabled="tab.disabled"
     		ng-click="$event.stopPropagation()">
-      <table class="table">
-				<a href="#" 
-		 			 ng-click="score.switchChords(sub.root, sub.type, $parent.$index, $parent.$parent.$index)">
-	      <tr ng-repeat="sub in score.substitutions.slice(tab.slice[0], tab.slice[1])">
-	        <td class="sub-names">{{sub.root}}{{sub.type}}</td>
-	        <td class="sub-notes"> &#40; {{sub.notes.join(', ')}} &#41; </td>
-	      </tr>
-    	</table>
+
+		    <li ng-repeat="sub in score.substitutions.slice(tab.slice[0], tab.slice[1])">
+					<a href="#" 
+		 				 ng-click="score.switchChords(sub.root, sub.type, $parent.$parent.$index)">
+{{sub.root}}{{sub.type}}
+ &#40; {{sub.notes.join(', ')}} &#41; 
+	    		</a>
+		    </li>
+
     </tab>
   </tabset>
 </div>
