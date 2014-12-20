@@ -8,10 +8,9 @@
       </tr>
     </table>
   </a> -->
-
+<div class="subs-menu">
   <tabset>
-    <tab ng-click="$event.stopPropagation()" heading="Static title">Static content</tab>
-    <tab ng-repeat="tab in subtabs.tabs.slice(0,4)" 
+    <tab ng-repeat="tab in subtabs.tabs" 
     		heading="{{tab.title}}" 
     		active="tab.active" 
     		disabled="tab.disabled"
@@ -19,10 +18,11 @@
       <table class="table">
 				<a href="#" 
 		 			 ng-click="score.switchChords(sub.root, sub.type, $parent.$index, $parent.$parent.$index)">
-	      <tr ng-repeat="sub in score.substitutions">
+	      <tr ng-repeat="sub in score.substitutions.slice(tab.slice[0], tab.slice[1])">
 	        <td class="sub-names">{{sub.root}}{{sub.type}}</td>
 	        <td class="sub-notes"> &#40; {{sub.notes.join(', ')}} &#41; </td>
 	      </tr>
     	</table>
     </tab>
   </tabset>
+</div>
