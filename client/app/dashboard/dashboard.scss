@@ -26,7 +26,6 @@ h1, h2 {
 	select {
 		margin: 4px;
 		margin-top: 6px;
-		width: 50%;
 		float: right;
 	}
 }
@@ -37,12 +36,14 @@ h1, h2 {
   text-align: center;
   padding: 6px 0;
   font-size: 16px;
-  margin-top: 4.2px;
   border-radius: 15px; 
-  margin-bottom: 4.2px;
   line-height: 1;
 }
 
 #save {
 	float: right;
+}
+
+.note-names {
+	margin-left: -2px !important;
 }

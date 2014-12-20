@@ -15,6 +15,8 @@ function DashboardCtrl($scope, dataservice, musicNotes, song,
 
 	vm.addMeasure = addMeasure;
 	vm.beats = song.beats;
+	vm.beatsDown = beatsDown;
+	vm.beatsUp = beatsUp;
 	vm.discardDraft = discardDraft;
 	vm.getInfo = getInfo;
 	vm.loadMySong = loadMySong;
@@ -45,6 +47,16 @@ function DashboardCtrl($scope, dataservice, musicNotes, song,
 
 	function addMeasure(note) {
 		song.addMeasure(note, vm.beats);
+	}
+
+		function beatsDown() {
+		song.beats -= 1;
+		vm.beats = song.beats;
+	}
+
+	function beatsUp() {
+		song.beats += 1;
+		vm.beats = song.beats;
 	}
 
 	function discardDraft() {

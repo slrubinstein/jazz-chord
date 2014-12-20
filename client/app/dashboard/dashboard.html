@@ -9,10 +9,10 @@
 				<div class="btn-group">
 					<li draggable 
 							id="rest" 
-							class="btn-group btn btn-default" 
+							class="btn-group btn btn-default note-names" 
 							ng-click="dash.addMeasure('rest')">rest</li>
 					<li draggable
-							class="btn-group btn btn-default"
+							class="btn-group btn btn-default note-names"
 							ng-repeat="note in dash.notes | limitTo: 12"
 							ng-click="dash.addMeasure(note)">{{ note }}</li>
 				</div>
@@ -24,8 +24,22 @@
 
 			</div>
 
+			<div class="btn-group">
+			 	<p class="btn btn-default">Beats per Measure: {{dash.beats}}</p>
+					  
+			 	<button 
+			 		type="button"
+			 		class="btn btn-default"
+			 		ng-click=dash.beatsUp()>&#8593;</button>
+			 	<button 
+			 		type="button" 
+			 		class="btn btn-default"
+			 		ng-click=dash.beatsDown()>&#8595;</button>
+			</div>
+			<br/>
+
 		  <div class="btn-group">
-			 	<p class="btn btn-default">Tempo {{dash.tempo}} bpm</p>
+			 	<p class="btn btn-default">Tempo: {{dash.tempo}} bpm</p>
 					  
 			 	<button 
 			 		type="button"
@@ -36,6 +50,7 @@
 			 		class="btn btn-default"
 			 		ng-click=dash.tempoDown()>&#8595;</button>
 			</div>
+			
 			<br>
 
 		  <button class="btn btn-default" ng-click="dash.playSong()">Play</button>
