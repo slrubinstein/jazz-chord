@@ -46,7 +46,7 @@ function player() {
         song.forEach(function(measure) {
 
           measure.forEach(function(beat) {
-console.log(beat)
+
             var chordFreqs = beat.frequencies;
             // check for rests
             if (beat.root === '/') {
