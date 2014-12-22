@@ -13,4 +13,5 @@ Play for yourself at chord-substitutor.herokuapp.com.
 Jazz Chord Substitutor was created by Steve Rubinstein 
 while he has a student at Fullstack Academy in New York.
 It was built on the MEAN stack (Mongo, Express, Angular, 
-Node) using the Angular Fullstack Generator.
+Node) using the Angular Fullstack Generator. It uses
+Audiolet to interact with the Web Audio API.
