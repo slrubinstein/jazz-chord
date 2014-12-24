@@ -26,7 +26,7 @@ function DashboardCtrl($scope, dataservice, musicNotes, song,
 	vm.saveModal = saveModal;
 	vm.songTitle = song.title;
 	vm.substitutions = musicSubstitutions.substitutions;
-	vm.standards = dataservice.getAllStandards();
+	// vm.standards = dataservice.getAllStandards();
 	vm.tempo = song.tempo;
 	vm.tempoDown = tempoDown;
 	vm.tempoUp = tempoUp;
@@ -42,7 +42,7 @@ function DashboardCtrl($scope, dataservice, musicNotes, song,
 				vm.userSongs = getAllUserSongs(vm.user._id);		
 			}
 		});
-		// getAllStandards();
+		// dataservice.getAllStandards();
 	}
 
 	function addMeasure(note) {

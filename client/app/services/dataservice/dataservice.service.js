@@ -21,7 +21,7 @@ function dataservice($http) {
   }
 
   function getAllStandards() {
-
+    return $http.get('/api/users/' + userId + '/songs');
   }
 
   function getAllUserSongs(userId) {
