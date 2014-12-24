@@ -1,18 +1,16 @@
 <tabset>
-  <tab ng-repeat="tab in subtabs.tabs" 
-      heading="{{::tab.title}}" 
-      active="tab.active" 
-      disabled="tab.disabled"
-      ng-click="$event.stopPropagation()">
-
-      <li ng-repeat="sub in score.substitutions.slice(tab.slice[0], tab.slice[1])"
-          class="substitution">
-        <a href="#" 
-           ng-click="score.switchChords(sub.root, sub.type)">
-            {{::sub.altRoot || sub.root}}{{::sub.type}}
+  <tab class="sub-tabs"
+       ng-repeat="tab in subtabs.tabs" 
+       heading="{{::tab.title}}" 
+       active="tab.active" 
+       disabled="tab.disabled"
+       ng-click="$event.stopPropagation()">
+    <ul class="list-group" ng-repeat="sub in score.substitutions.slice(tab.slice[0], tab.slice[1])">
+      <li class="list-group-item substitutions"
+          ng-click="score.switchChords(sub.root, sub.type)">
+        {{::sub.altRoot || sub.root}}{{::sub.type}}
             &#40; {{::sub.notes.join(', ')}} &#41; 
-        </a>
       </li>
-
+    </ul>
   </tab>
 </tabset> 

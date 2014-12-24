@@ -6,6 +6,16 @@
 	}
 }
 
-.substitution {
-	margin: 18px;
+
+.sub-tabs {
+	margin-top: 10px;
+}
+
+.substitutions {
+	margin-bottom: -22px;
+	&:hover {
+		cursor: pointer;
+		color: white;
+		background-color: lightblue;
+	}
 }
