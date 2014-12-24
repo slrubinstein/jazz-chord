@@ -13,16 +13,16 @@
       				type="button" 
 		      		class="btn btn-default dropdown-toggle"
               ng-class="{lastBtn:$last}"
-		      		ng-click="score.makeSubs(beat.root)">
+		      		ng-click="score.makeSubs($event, beat.root)">
       				{{beat.altRoot || beat.root}} {{beat.type}}
 			</button>
 
 			<!-- Substitution dropdown menu -->
-      <ul class="dropdown-menu" role="menu">
-        <chord-substitutions></chord-substitutions>
-      </ul>
     </div>
 
 
   </div>
+      <!-- <ul class="dropdown-menu" role="menu"> -->
+        <chord-substitutions></chord-substitutions>
+      <!-- </ul> -->
 </div>

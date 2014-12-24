@@ -1,13 +1,15 @@
 'use strict';
 
 angular.module('jazzChordApp')
+	.value('current', {beat: null,
+										 measure: null})
   .controller('ScoreCtrl', ScoreCtrl);
 
 ScoreCtrl.$inject = ['$scope', 'song', 'musicSubstitutions',
-											'musicChords', 'player'];
+											'musicChords', 'player', 'current'];
 
 function ScoreCtrl($scope, song, musicSubstitutions, musicChords,
-									 player) {
+									 player, current) {
 
 	var vm = this;
 
@@ -22,7 +24,10 @@ function ScoreCtrl($scope, song, musicSubstitutions, musicChords,
 		song.deleteMeasure(index);
 	}
 
-	function makeSubs(root) {
+	function makeSubs(event, root) {
+		current.beat = $(event.target).parent();
+		current.measure = $(event.target).parent().parent();
+
 		if (root === '/') {
 			vm.substitutions = [];
 			return;
@@ -30,8 +35,10 @@ function ScoreCtrl($scope, song, musicSubstitutions, musicChords,
 		vm.substitutions = musicSubstitutions.getSubs(root);
 	}
 
-	function switchChords(root, type, beatIndex, measureIndex) {
+	function switchChords(root, type) {
 
+		var beatIndex = current.beat.index() - 1;
+		var measureIndex = current.measure.index();
 		// should move to a directive
 		if (measureIndex === undefined) {
 			measureIndex = $(event.target).closest('.song').index();
