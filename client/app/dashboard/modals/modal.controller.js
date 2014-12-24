@@ -11,19 +11,23 @@ angular.module('jazzChordApp')
 
   var vm = this;
 
-  vm.author = songData.author || '';
+  vm.author = songData.author || null;
   vm.cancel = cancel;
   vm.deleteFromDB = deleteFromDB;
   vm.discard = discard;
   vm.save = save;
   vm.songTitle = songData.songTitle || '';
+  vm.songId = songData.songId || null;
 
   function cancel () {
     $modalInstance.dismiss('cancel');
   };
 
   function deleteFromDB() {
-    console.log('Not yet supported')
+    dataservice.deleteFromDB({
+      songId: vm.songId,
+      userId: vm.author
+    })
     $modalInstance.close('not yet supported');
   }
 

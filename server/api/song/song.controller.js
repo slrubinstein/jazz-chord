@@ -54,6 +54,11 @@ exports.destroy = function(req, res) {
     if(!song) { return res.send(404); }
     song.remove(function(err) {
       if(err) { return handleError(res, err); }
+      User.findById(req.params.userId, function(err, user) {
+        if(!user) { return ; }
+        _.pull(user.songs, req.params.id);
+        user.save();
+      });
       return res.send(204);
     });
   });

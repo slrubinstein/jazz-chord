@@ -41,11 +41,4 @@ function ScoreCtrl($scope, song, musicSubstitutions, musicChords,
 		song.song[measureIndex].splice(beatIndex, 1, newBeat);
 		player.playOne(newBeat);
 	}
-
-	$scope.$on('updateSong', function(event, loadedSong) {
-		song.song.length = 0;
-		loadedSong.forEach(function(measure) {
-			song.song.push(measure)
-		})
-	})
 }

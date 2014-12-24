@@ -8,6 +8,7 @@ song.$inject = ['musicChords', 'player']
 function song(musicChords, player) {
 
   var song = [];
+  var songId = '';
   var beats = 4;
   var tempo = 120;
   var title = '';
@@ -16,10 +17,12 @@ function song(musicChords, player) {
     addMeasure: addMeasure,
     beats: beats,
     deleteMeasure: deleteMeasure,
+    loadSong: loadSong,
     song: song,
+    songId: songId,
     tempo: tempo,
     title: title
-    }
+  }
 
   function addMeasure(note, beats) {
     var type = 'M';
@@ -37,6 +40,14 @@ function song(musicChords, player) {
 
   function deleteMeasure(index) {
     song.splice(index, 1);
+  }
+
+  function loadSong(loadedSong) {
+    song.length = 0;
+    loadedSong.song.forEach(function(measure) {
+      song.push(measure);
+    });
+    songId = loadedSong._id;
   }
 }
 
