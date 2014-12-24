@@ -22,6 +22,9 @@ function ScoreCtrl($scope, song, musicSubstitutions, musicChords,
 	
 	function deleteMeasure(index) {
 		song.deleteMeasure(index);
+		current.beat = null;
+		current.measure = null;
+		vm.substitutions = [];
 	}
 
 	function makeSubs(event, root) {
@@ -35,13 +38,13 @@ function ScoreCtrl($scope, song, musicSubstitutions, musicChords,
 		vm.substitutions = musicSubstitutions.getSubs(root);
 	}
 
-	function switchChords(root, type) {
+	function switchChords(root, type, beatIndex, measureIndex) {
 
-		var beatIndex = current.beat.index() - 1;
-		var measureIndex = current.measure.index();
-		// should move to a directive
+		if (beatIndex === undefined) {
+			beatIndex = current.beat.index() - 1;
+		}
 		if (measureIndex === undefined) {
-			measureIndex = $(event.target).closest('.song').index();
+			measureIndex = current.measure.index();
 		}
 
 		var newBeat = musicChords.buildChord(root, type);

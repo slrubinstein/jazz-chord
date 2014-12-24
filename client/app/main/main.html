@@ -2,29 +2,9 @@
 
 <dashboard></dashboard>
 
-<div class="subs-menu col-lg-3">
-  Substitutions
-  <tabset>
-    <tab ng-repeat="tab in subtabs.tabs" 
-    		heading="{{::tab.title}}" 
-    		active="tab.active" 
-    		disabled="tab.disabled"
-    		ng-click="$event.stopPropagation()">
+  <chord-substitutions class="subs-menu col-lg-3 col-md-3 col-sm-3"></chord-substitutions>
 
-		    <li ng-repeat="sub in score.substitutions.slice(tab.slice[0], tab.slice[1])"
-		    		class="substitution">
-					<a href="#" 
-		 				 ng-click="score.switchChords(sub.root, sub.type)">
-							{{::sub.altRoot || sub.root}}{{::sub.type}}
- 							&#40; {{::sub.notes.join(', ')}} &#41; 
-	    		</a>
-		    </li>
-
-    </tab>
-  </tabset>
-</div>
-
-<score class="col-lg-9"></score>
+<score class="col-lg-9 col-md-9 col-sm-9"></score>
 
 <footer class="footer">
   <div class="container">

@@ -1,31 +1,18 @@
-<!-- <table class="table">
-	<a href="#" 
-		 ng-click="score.switchChords(sub.root, sub.type, $parent.$index, $parent.$parent.$index)"
-		 >
-      <tr ng-repeat="sub in score.substitutions">
-        <td class="sub-names">{{sub.root}}{{sub.type}}</td>
-        <td class="sub-notes"> &#40; {{sub.notes.join(', ')}} &#41; </td>
-      </tr>
-    </table>
-  </a> -->
-<!-- <div class="subs-menu">
-  Substitutions
-  <tabset>
-    <tab ng-repeat="tab in subtabs.tabs" 
-    		heading="{{::tab.title}}" 
-    		active="tab.active" 
-    		disabled="tab.disabled"
-    		ng-click="$event.stopPropagation()">
+<tabset>
+  <tab ng-repeat="tab in subtabs.tabs" 
+      heading="{{::tab.title}}" 
+      active="tab.active" 
+      disabled="tab.disabled"
+      ng-click="$event.stopPropagation()">
 
-		    <li ng-repeat="sub in score.substitutions.slice(tab.slice[0], tab.slice[1])"
-		    		class="substitution">
-					<a href="#" 
-		 				 ng-click="score.switchChords(sub.root, sub.type, $parent.$parent.$index)">
-							{{::sub.altRoot || sub.root}}{{::sub.type}}
- 							&#40; {{::sub.notes.join(', ')}} &#41; 
-	    		</a>
-		    </li>
+      <li ng-repeat="sub in score.substitutions.slice(tab.slice[0], tab.slice[1])"
+          class="substitution">
+        <a href="#" 
+           ng-click="score.switchChords(sub.root, sub.type)">
+            {{::sub.altRoot || sub.root}}{{::sub.type}}
+            &#40; {{::sub.notes.join(', ')}} &#41; 
+        </a>
+      </li>
 
-    </tab>
-  </tabset>
-</div> -->
+  </tab>
+</tabset> 

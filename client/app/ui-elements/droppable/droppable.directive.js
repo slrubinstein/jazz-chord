@@ -22,6 +22,7 @@ function link(scope, element, attrs) {
     			ctrl = scope.$parent.$parent.score;
 
     	ctrl.switchChords(root, type, beatIndex, measureIndex);
+      ctrl.substitutions = [];
     	scope.$apply();
     }
   })
