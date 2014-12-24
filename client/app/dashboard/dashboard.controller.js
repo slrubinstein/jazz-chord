@@ -25,7 +25,6 @@ function DashboardCtrl($scope, dataservice, musicNotes, song,
 	vm.playSong = playSong;
 	vm.saveModal = saveModal;
 	vm.songTitle = song.title;
-	vm.songId = song.songId;
 	vm.substitutions = musicSubstitutions.substitutions;
 	vm.standards = dataservice.getAllStandards();
 	vm.tempo = song.tempo;
@@ -68,13 +67,20 @@ function DashboardCtrl($scope, dataservice, musicNotes, song,
  			resolve: {
  				songData: function() {
  					var songData = {
- 						songTitle: vm.songTitle,
+ 						songTitle: vm.mySong.title,
  						author: vm.user._id,
- 						songId: vm.songId
+ 						songId: vm.mySong._id
  					};
  					return songData;
  				}
  			}
+ 		});
+
+ 		modalInstance.result.then(function(result) {
+ 			song.title = '';
+ 			vm.songTitle = song.title;
+ 			vm.mySong = '';
+ 			getAllUserSongs(vm.user._id);
  		});
 
 	}
@@ -116,7 +122,8 @@ function DashboardCtrl($scope, dataservice, musicNotes, song,
 				return;
 			};
 			song.loadSong(loadedSong.data);
-			vm.songId = loadedSong.data._id;
+			song.title = loadedSong.data.title;
+			vm.songTitle = song.title;
 		});
 	}
 

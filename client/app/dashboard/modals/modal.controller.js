@@ -28,12 +28,15 @@ angular.module('jazzChordApp')
       songId: vm.songId,
       userId: vm.author
     })
-    $modalInstance.close('not yet supported');
+    .then(function() {
+      song.song.length = 0;  
+      $modalInstance.close({msg: 'song deleted'});
+    })
   }
 
   function discard() {
     song.song.length = 0;
-    $modalInstance.close('draft discarded');
+    $modalInstance.close({msg: 'draft discarded'});
   }
 
   function save() {
