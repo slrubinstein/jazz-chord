@@ -1,5 +1,8 @@
 
-<div ui-sortable id="score" class="row" ng-model="score.song">
+<div ui-sortable 
+     id="score" 
+     class="row" 
+     ng-model="score.song">
 	<div class="song" ng-repeat="measure in score.song track by $index">
 		<!-- btn-group = beats in measure and delete button -->
 
@@ -9,6 +12,7 @@
 		<div class="btn-group measure" 
          ng-repeat="beat in measure track by $index">
       <button droppable
+              select-beat
               type="button" 
 		      		class="btn btn-default"
               ng-class="{lastBtn:$last}"
