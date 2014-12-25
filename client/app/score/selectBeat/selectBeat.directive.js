@@ -3,9 +3,7 @@
 angular.module('jazzChordApp')
   .directive('selectBeat', selectBeat)
 
-selectBeat.$inject = ['$document'];
-
-function selectBeat($document) {
+function selectBeat() {
   return function(scope, element, attr) {
 		element.on('click', function() {
 			$('.select-beat').removeClass('select-beat')
