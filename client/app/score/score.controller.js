@@ -3,20 +3,7 @@
 angular.module('jazzChordApp')
 	.value('current', {beat: null,
 										 measure: null})
-  .controller('ScoreCtrl', ScoreCtrl)
-
-  .directive('selectBeat', function($document) {
-  	return function(scope, element, attr) {
-			element.on('click', function() {
-  			$('.select-beat').removeClass('select-beat')
-  			element.addClass('select-beat');
-  		})
-  	}
-  })
-
-
-
-  ;
+  .controller('ScoreCtrl', ScoreCtrl);
 
 ScoreCtrl.$inject = ['$scope', 'song', 'musicSubstitutions',
 											'musicChords', 'player', 'current'];
@@ -62,7 +49,6 @@ function ScoreCtrl($scope, song, musicSubstitutions, musicChords,
 	function nextBeat() {
 		if (current.measure.index() === song.song.length - 1 &&
 				current.beat.index() === current.measure.children().length - 1) {
-			console.log('end of song')
 			return;
 		}
 
@@ -78,7 +64,6 @@ function ScoreCtrl($scope, song, musicSubstitutions, musicChords,
 	function prevBeat() {
 		if (current.measure.index() === 0 &&
 				current.beat.index() === 1) {
-			console.log('beginning of song')
 			return;
 		}
 
