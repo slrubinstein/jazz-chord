@@ -13,6 +13,7 @@ function ChordsubstitutiontabsCtrl() {
     { title: 'Dom7 Subs', slice: [4, 10] },
     { title: 'minor Subs', slice: [10, 14] },
     { title: 'Tonic Subs', slice: [14, 16] },
+    {title: 'All', slice: [0, 16]}
   ];
 
 }
