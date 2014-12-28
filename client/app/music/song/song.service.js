@@ -32,8 +32,9 @@ function song(musicChords, player) {
     }
 
     song.push(measure);
-
-    player.playOne(measure[0])
+    if (player.playerOn) {
+      player.playOne(measure[0]);
+    }
   }
 
   function deleteMeasure(index) {

@@ -6,6 +6,7 @@ angular.module('jazzChordApp')
 function player() {
 
   return {
+    playerOn: false,
     makeSynth: function() {
       var Synth = function(audiolet, frequency) {
         AudioletGroup.call(this, audiolet, 0, 1);

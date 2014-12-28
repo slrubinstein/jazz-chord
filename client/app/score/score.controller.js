@@ -48,6 +48,8 @@ function ScoreCtrl($scope, song, musicSubstitutions, musicChords,
 
 		var newBeat = musicChords.buildChord(root, type);
 		song.song[measureIndex].splice(beatIndex, 1, newBeat);
-		player.playOne(newBeat);
+		if (player.playerOn) {
+			player.playOne(newBeat);
+		}
 	}
 }

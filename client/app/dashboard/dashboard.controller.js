@@ -26,10 +26,10 @@ function DashboardCtrl($scope, dataservice, musicNotes, song,
 	vm.saveModal = saveModal;
 	vm.songTitle = song.title;
 	vm.substitutions = musicSubstitutions.substitutions;
-	// vm.standards = dataservice.getAllStandards();
 	vm.tempo = song.tempo;
 	vm.tempoDown = tempoDown;
 	vm.tempoUp = tempoUp;
+	vm.togglePlayer = togglePlayer;
 	vm.user = {};
 	vm.userSongs = [];
 
@@ -171,5 +171,9 @@ function DashboardCtrl($scope, dataservice, musicNotes, song,
 		vm.tempo = song.tempo;
 	}
 	
+	function togglePlayer() {
+		player.playerOn = !player.playerOn;
+		console.log('player is on', player.playerOn)
+	}
 
 }
