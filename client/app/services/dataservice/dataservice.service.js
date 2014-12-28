@@ -20,7 +20,7 @@ function dataservice($http) {
   }
 
   function getAllStandards() {
-    return $http.get('/api/songs/standards');
+    return $http.get('/api/songs');
   }
 
   function getAllUserSongs(userId) {

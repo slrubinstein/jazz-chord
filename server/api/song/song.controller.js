@@ -4,11 +4,15 @@ var _ = require('lodash');
 var Song = require('./song.model');
 var User = require('../user/user.model');
 
+var standards = ['54a08b20b3dd1e02007a264b']
+
 // Get list of songs
 exports.index = function(req, res) {
   Song.find(function (err, songs) {
     if(err) { return handleError(res, err); }
-    return res.json(200, songs);
+    var result = _.intersection(songs, standards);
+    console.log('returning', result)
+    return res.json(200, result);
   });
 };
 
