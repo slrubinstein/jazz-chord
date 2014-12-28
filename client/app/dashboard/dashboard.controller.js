@@ -19,12 +19,14 @@ function DashboardCtrl($scope, dataservice, musicNotes, song,
 	vm.beatsUp = beatsUp;
 	vm.discardDraft = discardDraft;
 	vm.getInfo = getInfo;
-	vm.loadMySong = loadMySong;
+	vm.loadSong = loadSong;
 	vm.mySong = '';
 	vm.notes = musicNotes.noteNames;
 	vm.playSong = playSong;
 	vm.saveModal = saveModal;
+	vm.selectStandard = '';
 	vm.songTitle = song.title;
+	vm.standards = [];
 	vm.substitutions = musicSubstitutions.substitutions;
 	vm.tempo = song.tempo;
 	vm.tempoDown = tempoDown;
@@ -42,7 +44,7 @@ function DashboardCtrl($scope, dataservice, musicNotes, song,
 				vm.userSongs = getAllUserSongs(vm.user._id);		
 			}
 		});
-		// dataservice.getAllStandards();
+		vm.standards = dataservice.getAllStandards();
 	}
 
 	function addMeasure(note) {
@@ -111,12 +113,9 @@ function DashboardCtrl($scope, dataservice, musicNotes, song,
 
 	}
 
-	function loadMySong() {
-		if (!vm.mySong._id) {
-			return;
-		}
+	function loadSong(songId) {
 
-		dataservice.loadMySong(vm.mySong._id)
+		dataservice.loadSong(songId)
 		.then(function(loadedSong) {
 			if (loadedSong.data.song.length === 0) {
 				return;

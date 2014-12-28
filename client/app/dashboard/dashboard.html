@@ -90,10 +90,10 @@
 						<button class="btn btn-default dash" ng-click="dash.discardDraft(dash)">Discard Draft</button>
 					</div>
 					<div class="row">
-						<button class="btn btn-default dash" ng-click="dash.loadMySong()">Load My Song</button>
+						<button class="btn btn-default dash" ng-click="dash.mySong._id && dash.loadSong(dash.mySong._id)">Load My Song</button>
 				</div>
 				<div class="row">
-					<button class="btn btn-default dash" ng-click="dash.loadStandard()">Load Standard</button>
+					<button class="btn btn-default dash" ng-click="dash.selectStandard._id && dash.loadSong(dash.selectStandard._id)">Load Standard</button>
 				</div>
 			</div>
 

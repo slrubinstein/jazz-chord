@@ -10,8 +10,7 @@ function dataservice($http) {
     deleteFromDB: deleteFromDB,
     getAllStandards: getAllStandards,
     getAllUserSongs: getAllUserSongs,
-    loadMySong: loadMySong,
-    loadStandard: loadStandard,
+    loadSong: loadSong,
     saveSong: saveSong
   }
 
@@ -21,7 +20,7 @@ function dataservice($http) {
   }
 
   function getAllStandards() {
-    return $http.get('/api/users/' + userId + '/songs');
+    return $http.get('/api/songs/standards');
   }
 
   function getAllUserSongs(userId) {
@@ -32,11 +31,7 @@ function dataservice($http) {
     return $http.post('/api/songs', songData)
   }
 
-  function loadMySong(songId) {
+  function loadSong(songId) {
     return $http.get('/api/songs/' + songId);
-  }
-
-  function loadStandard() {
-    // return $http.put...
   }
 }

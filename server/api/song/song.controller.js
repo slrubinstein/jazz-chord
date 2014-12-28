@@ -64,6 +64,18 @@ exports.destroy = function(req, res) {
   });
 };
 
+// Get all standards
+exports.standards = function (req, res, next) {
+  var userId = '549ae7572a62d302008b0835';
+  User.findById(userId)
+      .populate('songs')
+      .exec(function (err, user) {
+    if (err) return next(err);
+    res.json(user.songs);
+  });
+};
+
+
 function handleError(res, err) {
   return res.send(500, err);
 }
