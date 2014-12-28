@@ -10,6 +10,8 @@ var standards = ['54a08b20b3dd1e02007a264b']
 exports.index = function(req, res) {
   Song.find(function (err, songs) {
     if(err) { return handleError(res, err); }
+    console.log('STANDARDS =================', standards)
+    console.log('SONGS ===============', songs)
     var result = _.intersection(songs, standards);
     console.log('returning', result)
     return res.json(200, result);

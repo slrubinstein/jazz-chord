@@ -14,7 +14,7 @@ function link(scope, element, attrs) {
   element.droppable({
     scope: 'chords',
     drop: function(event, ui) {
-    	var root = ui.draggable.text(),
+    	var root = ui.draggable.text() || 'rest',
     			type = 'M',
           // beatIndex must be -1 to account for delete button
     			beatIndex = $(event.target).parent().index() - 1,
