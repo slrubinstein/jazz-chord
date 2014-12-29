@@ -11,7 +11,6 @@ exports.index = function(req, res) {
   Song.find({'_id': {$in: standards}},
     function (err, songs) {
     if(err) { return handleError(res, err); }
-    console.log('SONGS', songs)
     return res.json(200, songs);
   });
 };

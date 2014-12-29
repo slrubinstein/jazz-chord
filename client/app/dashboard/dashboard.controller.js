@@ -175,7 +175,6 @@ function DashboardCtrl($scope, dataservice, musicNotes, song,
 	
 	function togglePlayer() {
 		player.playerOn = !player.playerOn;
-		console.log('player is on', player.playerOn)
 	}
 
 }
