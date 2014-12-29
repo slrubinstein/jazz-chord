@@ -44,7 +44,11 @@ function DashboardCtrl($scope, dataservice, musicNotes, song,
 				vm.userSongs = getAllUserSongs(vm.user._id);		
 			}
 		});
-		vm.standards = dataservice.getAllStandards();
+		dataservice.getAllStandards()
+		.then(function(standards) {
+			vm.standards = standards.data;
+			console.log('returned', vm.standards)
+		});
 	}
 
 	function addMeasure(note) {
