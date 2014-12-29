@@ -47,7 +47,6 @@ function DashboardCtrl($scope, dataservice, musicNotes, song,
 		dataservice.getAllStandards()
 		.then(function(standards) {
 			vm.standards = standards.data;
-			console.log('returned', vm.standards)
 		});
 	}
 
