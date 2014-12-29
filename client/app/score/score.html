@@ -18,6 +18,7 @@
               ng-class="{lastBtn:$last}"
 		      		ng-click="score.makeSubs($event, beat.root)">
       				{{beat.altRoot || beat.root}} {{beat.type}}
+              <img ng-if="!beat.root" src="assets/images/rest4px.png">
 			</button>
 
     </div>

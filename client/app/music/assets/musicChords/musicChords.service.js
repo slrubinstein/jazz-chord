@@ -19,7 +19,7 @@ function musicChords(musicNotes) {
 
   function buildChord(root, type) {
     if (root === 'rest') {
-      var chord = {root: '/'};
+      var chord = {root: null};
     } else {
       var chord = {};
       chord.root = root;

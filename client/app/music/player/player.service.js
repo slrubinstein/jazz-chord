@@ -50,7 +50,7 @@ function player() {
 
             var chordFreqs = beat.frequencies;
             // check for rests
-            if (beat.root === '/') {
+            if (beat.root === null) {
               chordFreqs = [];
             }
             else {
