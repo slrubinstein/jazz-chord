@@ -8,7 +8,8 @@ var standards = ['54a08b20b3dd1e02007a264b']
 
 // Get list of songs
 exports.index = function(req, res) {
-  Song.find(function (err, songs) {
+  Song.find({'._id': {$in: standards}},
+    function (err, songs) {
     if(err) { return handleError(res, err); }
 
     // songs is pulling up whole data objects, not just IDs
