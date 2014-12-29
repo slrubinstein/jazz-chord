@@ -4,7 +4,8 @@ var _ = require('lodash');
 var Song = require('./song.model');
 var User = require('../user/user.model');
 
-var standards = ['54a08b20b3dd1e02007a264b']
+var standards = [/* all of me */ '54a08b20b3dd1e02007a264b', 
+                 /*sweet g b */ '54a16838ed16fb0200ab2499']
 
 // Get list of songs
 exports.index = function(req, res) {
