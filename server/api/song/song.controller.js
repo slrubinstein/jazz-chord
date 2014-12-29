@@ -11,13 +11,7 @@ exports.index = function(req, res) {
   Song.find({'_id': {$in: standards}},
     function (err, songs) {
     if(err) { return handleError(res, err); }
-
-    // songs is pulling up whole data objects, not just IDs
-    console.log('STANDARDS =================', standards)
-    console.log('SONGS ===============', songs)
-    var result = _.intersection(songs, standards);
-    console.log('returning', result)
-    return res.json(200, result);
+    return res.json(200, songs);
   });
 };
 
