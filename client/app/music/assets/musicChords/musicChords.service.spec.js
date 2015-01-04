@@ -11,8 +11,9 @@ describe('Service: musicChords', function () {
     musicChords = _musicChords_;
   }));
 
-  it('should do something', function () {
-    expect(!!musicChords).toBe(true);
+  it('should build a C major triad', function () {
+    var chord = musicChords.buildChord('C', 'M');
+    expect(chord.root).toBe('C');
   });
 
 });

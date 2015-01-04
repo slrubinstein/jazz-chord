@@ -6,7 +6,7 @@ angular.module('jazzChordApp')
 function draggable() {
   return {
     restrict: 'A',
-    link: function(scope, element, attrs) {
+    link: function(scope, element) {
     	element.draggable({
         revert: 'invalid',
         cursor: 'grabbing',
