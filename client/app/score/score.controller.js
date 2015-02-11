@@ -19,6 +19,7 @@ function ScoreCtrl($scope, song, musicSubstitutions, musicChords,
 	vm.substitutions = [];
 	vm.switchChords = switchChords;
 	vm.rest = '<img ng-src="assets/images/rest8px.png">'
+	
 	function deleteMeasure(index) {
 		song.deleteMeasure(index);
 		current.beat = null;
