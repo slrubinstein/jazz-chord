@@ -15,3 +15,6 @@ while he was a student at Fullstack Academy in New York.
 It was built on the MEAN stack (Mongo, Express, Angular, 
 Node) using the Angular Fullstack Generator. It uses
 Audiolet to interact with the Web Audio API.
+
+-- Added Feb 11 --
+Bass Player Mode: check this box to remove the root note from playback.
