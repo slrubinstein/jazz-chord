@@ -36,9 +36,9 @@ function player() {
       return Synth;
     },
 
-    playSong: function(song, bpm) {
+    playSong: function(song, bpm, bassPlayerMode) {
       var Synth = this.makeSynth();
-      var SchedulerApp = function(song, bpm) {
+      var SchedulerApp = function(song, bpm, bassPlayerMode) {
         this.audiolet = new Audiolet();
         this.audiolet.scheduler.setTempo(bpm)
 
@@ -54,7 +54,12 @@ function player() {
               chordFreqs = [];
             }
             else {
-              chordFreqs = beat.frequencies;
+              if (bassPlayerMode) {
+                var rootRemoved = beat.frequencies.slice(1);
+                chordFreqs = rootRemoved;
+              } else {
+                chordFreqs = beat.frequencies;
+              }
             }
             allChords.push(chordFreqs);
           })
@@ -70,9 +75,10 @@ function player() {
           var frequency = chord[i]
           var synth = new Synth(this.audiolet, frequency);
           synth.connect(this.audiolet.output);
+          console.log('chord', chord);
         }
       };
-      var app = new SchedulerApp(song, bpm);
+      var app = new SchedulerApp(song, bpm, bassPlayerMode);
     },
 
     //-------------------------------------------------------------//

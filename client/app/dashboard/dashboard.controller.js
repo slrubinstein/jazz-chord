@@ -14,6 +14,7 @@ function DashboardCtrl($scope, dataservice, musicNotes, song,
 	var vm = this;
 
 	vm.addMeasure = addMeasure;
+	vm.bassPlayerMode = false;
 	vm.beats = song.beats;
 	vm.beatsDown = beatsDown;
 	vm.beatsUp = beatsUp;
@@ -130,7 +131,7 @@ function DashboardCtrl($scope, dataservice, musicNotes, song,
 	}
 
 	function playSong() {
-		player.playSong(song.song, song.tempo);
+		player.playSong(song.song, song.tempo, vm.bassPlayerMode);
 	}
 
 	function saveModal() {
@@ -176,5 +177,4 @@ function DashboardCtrl($scope, dataservice, musicNotes, song,
 	function togglePlayer() {
 		player.playerOn = !player.playerOn;
 	}
-
 }

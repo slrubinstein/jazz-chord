@@ -35,6 +35,7 @@ function song(musicChords, player) {
     if (player.playerOn) {
       player.playOne(measure[0]);
     }
+    console.log(song)
   }
 
   function deleteMeasure(index) {

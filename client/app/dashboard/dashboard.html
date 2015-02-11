@@ -56,6 +56,9 @@
 
 		  <button class="btn btn-default" ng-click="dash.playSong()">Play</button>
 		  Play every chord change: <input type="checkbox" ng-click="dash.togglePlayer()" checked> (if your browser is running slowly, consider unchecking this box.)
+
+		  <p>Bass player mode: <input type="checkbox" 
+		  	ng-model="dash.bassPlayerMode"> (removes the root note during playback.)</p>
 		</div>
 
 		<div class="col-md-4 col-lg-4 data-service-buttons">
