@@ -8,7 +8,7 @@ Playing 8 bars of C Major? JCS will let you know that you
 may consider also playing Cmaj7, Cmaj6, C7, C9, Em7, Am7, 
 etc...
 
-Play for yourself at chord-substitutor.herokuapp.com.
+Play for yourself at <a href="http://chord-substitutor.herokuapp.com">chord-substitutor.herokuapp.com</a>.
 
 Jazz Chord Substitutor was created by Steve Rubinstein 
 while he was a student at Fullstack Academy in New York.
